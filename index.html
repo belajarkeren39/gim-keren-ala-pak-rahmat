@@ -1,15 +1,15 @@
 <!DOCTYPE html>
-<html lang="id" class="scroll-smooth">
+<html lang="id" class="scroll-smooth dark">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Gim KEREN ala Pak Rahmat - Taman Bermain & Belajar Anak Hebat!</title>
+    <title>Gim KEREN ala Pak Rahmat - Retro Console Edition (90s-2000s)</title>
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Google Fonts: Fredoka & Nunito (Round, Friendly & Playful for Kids) -->
+    <!-- Google Fonts: Press Start 2P (Pixel 90s), Chakra Petch (Y2K 2000s Console) & Nunito (Readable Body) -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Nunito:wght@600;700;800;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@600;700&family=Nunito:wght@600;700;800;900&family=Press+Start+2P&display=swap" rel="stylesheet">
     <!-- Font Awesome Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 
@@ -20,7 +20,8 @@
                 extend: {
                     fontFamily: {
                         sans: ['Nunito', 'sans-serif'],
-                        kids: ['Fredoka', 'cursive', 'sans-serif'],
+                        pixel: ['"Press Start 2P"', 'monospace'],
+                        console: ['"Chakra Petch"', 'sans-serif'],
                     }
                 }
             }
@@ -28,124 +29,166 @@
     </script>
 
     <style>
-        /* Tactile 3D Toy Button & Card Styles for Kids */
-        .btn-toy {
-            transition: all 0.15s cubic-bezier(0.34, 1.56, 0.64, 1);
-            box-shadow: 0 6px 0 rgba(0, 0, 0, 0.18);
+        /* 90s-2000s Retro Console Tactile Hardware Styling */
+        .btn-arcade {
+            transition: all 0.12s cubic-bezier(0.34, 1.56, 0.64, 1);
+            box-shadow: 0 6px 0 #0f172a, inset 0 2px 0 rgba(255, 255, 255, 0.35);
         }
-        .btn-toy:hover {
+        .btn-arcade:hover {
             transform: translateY(-2px);
-            box-shadow: 0 8px 0 rgba(0, 0, 0, 0.2);
+            box-shadow: 0 8px 0 #0f172a, inset 0 2px 0 rgba(255, 255, 255, 0.45);
         }
-        .btn-toy:active {
+        .btn-arcade:active {
             transform: translateY(4px);
-            box-shadow: 0 2px 0 rgba(0, 0, 0, 0.18);
+            box-shadow: 0 2px 0 #0f172a, inset 0 1px 0 rgba(255, 255, 255, 0.2);
         }
 
-        .toy-card {
-            transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
-            box-shadow: 0 10px 0 rgba(15, 23, 42, 0.08);
+        /* Round A/B/X/Y Console Controller Buttons */
+        .btn-abxy {
+            transition: all 0.1s ease;
+            box-shadow: 0 5px 0 #090d16, inset 0 3px 4px rgba(255,255,255,0.4);
         }
-        .dark .toy-card {
-            box-shadow: 0 10px 0 rgba(0, 0, 0, 0.35);
-        }
-        .toy-card:hover {
-            transform: translateY(-8px) rotate(-0.5deg);
-            box-shadow: 0 16px 0 rgba(99, 102, 241, 0.18);
+        .btn-abxy:active {
+            transform: translateY(4px);
+            box-shadow: 0 1px 0 #090d16;
         }
 
-        /* Floating Cloud & Star Animations */
-        @keyframes floatCloud {
-            0%, 100% { transform: translateY(0px) translateX(0px); }
-            50% { transform: translateY(-10px) translateX(6px); }
+        /* 90s Game Cartridge Card Styling */
+        .cartridge-card {
+            transition: all 0.25s cubic-bezier(0.34, 1.56, 0.64, 1);
+            box-shadow: 0 10px 0 #1e1b4b, inset 0 2px 0 rgba(255, 255, 255, 0.25);
         }
-        @keyframes bounceSlow {
-            0%, 100% { transform: translateY(0) scale(1); }
-            50% { transform: translateY(-8px) scale(1.04); }
-        }
-        @keyframes wiggle {
-            0%, 100% { transform: rotate(-4deg); }
-            50% { transform: rotate(4deg); }
-        }
-        .animate-cloud {
-            animation: floatCloud 6s ease-in-out infinite;
-        }
-        .animate-bounce-slow {
-            animation: bounceSlow 3.5s ease-in-out infinite;
-        }
-        .animate-wiggle {
-            animation: wiggle 2.5s ease-in-out infinite;
+        .cartridge-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 18px 0 #312e81, 0 0 25px rgba(139, 92, 246, 0.4);
         }
 
-        /* Custom Polka Dot Kid Background */
-        .bg-playful-pattern {
-            background-image: radial-gradient(rgba(59, 130, 246, 0.14) 2px, transparent 2px), radial-gradient(rgba(245, 158, 11, 0.14) 2px, transparent 2px);
+        /* Cartridge Top Grip Ridges */
+        .cartridge-grip {
+            background: repeating-linear-gradient(
+                to bottom,
+                rgba(0, 0, 0, 0.18),
+                rgba(0, 0, 0, 0.18) 3px,
+                transparent 3px,
+                transparent 6px
+            );
+        }
+
+        /* Gold PCB Connector Pins at Bottom of Cartridge */
+        .gold-pins {
+            background: repeating-linear-gradient(
+                90deg,
+                #fbbf24 0px,
+                #fbbf24 6px,
+                #1e293b 6px,
+                #1e293b 10px
+            );
+        }
+
+        /* CRT Screen Scanlines & Bezel */
+        .crt-screen {
+            position: relative;
+            background: radial-gradient(circle at center, #1e293b 0%, #090d16 100%);
+            box-shadow: inset 0 0 30px rgba(0, 0, 0, 0.85), 0 0 15px rgba(56, 189, 248, 0.2);
+        }
+        .crt-scanlines::after {
+            content: " ";
+            display: block;
+            position: absolute;
+            top: 0; left: 0; bottom: 0; right: 0;
+            background: linear-gradient(
+                rgba(18, 16, 16, 0) 50%, 
+                rgba(0, 0, 0, 0.32) 50%
+            );
+            background-size: 100% 4px;
+            z-index: 20;
+            pointer-events: none;
+        }
+
+        /* Retro Grid Cyber Y2K Background */
+        .bg-retro-grid {
             background-size: 40px 40px;
-            background-position: 0 0, 20px 20px;
+            background-image: 
+                linear-gradient(to right, rgba(99, 102, 241, 0.12) 1px, transparent 1px),
+                linear-gradient(to bottom, rgba(99, 102, 241, 0.12) 1px, transparent 1px);
+        }
+
+        @keyframes blinkSlow {
+            0%, 49% { opacity: 1; }
+            50%, 100% { opacity: 0.25; }
+        }
+        .animate-blink {
+            animation: blinkSlow 1.2s infinite;
+        }
+
+        @keyframes floatPixel {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-6px); }
+        }
+        .animate-pixel-float {
+            animation: floatPixel 2.5s ease-in-out infinite;
         }
 
         /* Hide Scrollbar for Category Pills */
-        .no-scrollbar::-webkit-scrollbar {
-            display: none;
-        }
-        .no-scrollbar {
-            -ms-overflow-style: none;
-            scrollbar-width: none;
-        }
+        .no-scrollbar::-webkit-scrollbar { display: none; }
+        .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
     </style>
 </head>
-<body class="bg-sky-50 dark:bg-slate-950 text-slate-800 dark:text-slate-100 font-sans antialiased bg-playful-pattern selection:bg-amber-400 selection:text-slate-900 transition-colors duration-300">
+<body class="bg-slate-200 dark:bg-[#0d0b21] text-slate-900 dark:text-slate-100 font-sans antialiased bg-retro-grid selection:bg-amber-400 selection:text-slate-950 transition-colors duration-300">
 
     <!-- Toast Notification Container (Replaces alert) -->
     <div id="toastContainer" class="fixed bottom-5 right-5 z-50 flex flex-col gap-2.5 pointer-events-none"></div>
 
-    <!-- Modal Kejutan / Detail Misi Gim -->
-    <div id="kidModal" class="fixed inset-0 z-50 hidden items-center justify-center p-4 bg-slate-900/70 backdrop-blur-sm opacity-0 transition-opacity duration-200">
-        <div id="kidModalContent" class="bg-white dark:bg-slate-900 border-4 border-amber-400 dark:border-amber-500 rounded-[2rem] max-w-lg w-full p-6 sm:p-8 shadow-2xl transform scale-95 transition-transform duration-200 relative overflow-hidden">
-            <!-- Top Confetti Ribbon -->
-            <div id="modalHeaderBanner" class="h-3 w-full absolute top-0 left-0 bg-gradient-to-r from-amber-400 via-pink-500 to-sky-500"></div>
+    <!-- Modal Detail Kaset Gim (Cartridge Inspection Modal) -->
+    <div id="kidModal" class="fixed inset-0 z-50 hidden items-center justify-center p-4 bg-slate-950/80 backdrop-blur-md opacity-0 transition-opacity duration-200">
+        <div id="kidModalContent" class="bg-slate-100 dark:bg-slate-900 border-4 border-indigo-500 dark:border-amber-400 rounded-3xl max-w-lg w-full p-6 sm:p-7 shadow-2xl transform scale-95 transition-transform duration-200 relative overflow-hidden">
+            <!-- Top Cartridge Slot Header -->
+            <div class="flex items-center justify-between bg-slate-900 text-amber-400 px-4 py-2 rounded-xl mb-5 border-2 border-slate-700 font-pixel text-[10px]">
+                <span class="flex items-center gap-2">
+                    <span class="w-2.5 h-2.5 rounded-full bg-emerald-400 animate-ping"></span>
+                    <span id="modalNumberBadge">ROM CARTRIDGE #01</span>
+                </span>
+                <span id="modalCatBadge" class="text-cyan-300">WORLD-1</span>
+            </div>
 
-            <div class="flex items-start justify-between gap-4 mb-5 mt-2">
+            <div class="flex items-start justify-between gap-4 mb-5">
                 <div class="flex items-center gap-4">
-                    <div id="modalEmojiBox" class="w-16 h-16 rounded-3xl flex items-center justify-center text-3xl shadow-lg border-4 border-white dark:border-slate-800 shrink-0">
+                    <div id="modalEmojiBox" class="w-16 h-16 rounded-2xl flex items-center justify-center text-3xl shadow-lg border-4 border-slate-900 shrink-0">
                         🌟
                     </div>
                     <div>
-                        <div class="flex flex-wrap items-center gap-1.5 mb-1">
-                            <span id="modalCatBadge" class="text-xs font-extrabold uppercase tracking-wider px-3 py-0.5 rounded-full bg-amber-100 text-amber-800 dark:bg-amber-950 dark:text-amber-300">Kategori</span>
-                            <span id="modalNumberBadge" class="text-xs font-extrabold px-2.5 py-0.5 rounded-full bg-sky-100 text-sky-700 dark:bg-sky-950 dark:text-sky-300">Gim #01</span>
-                        </div>
-                        <h3 id="modalGameTitle" class="text-xl sm:text-2xl font-bold font-kids text-slate-900 dark:text-white leading-tight">Nama Gim Seru</h3>
+                        <p class="font-console font-bold text-xs uppercase tracking-widest text-indigo-600 dark:text-amber-400">DATA KASET GIM:</p>
+                        <h3 id="modalGameTitle" class="text-lg sm:text-xl font-bold font-console text-slate-900 dark:text-white leading-tight mt-0.5">Nama Gim Seru</h3>
                     </div>
                 </div>
-                <button onclick="closeKidModal()" class="w-10 h-10 rounded-2xl bg-rose-100 dark:bg-rose-950/80 text-rose-600 dark:text-rose-300 hover:bg-rose-200 flex items-center justify-center font-bold transition" aria-label="Tutup">
+                <button onclick="closeKidModal()" class="btn-arcade w-10 h-10 rounded-xl bg-rose-500 text-white hover:bg-rose-600 flex items-center justify-center font-bold border-2 border-slate-900" aria-label="Tutup">
                     <i class="fa-solid fa-xmark text-lg"></i>
                 </button>
             </div>
 
-            <!-- Story / Mission Box -->
-            <div class="bg-amber-50/90 dark:bg-slate-800/80 rounded-3xl p-4 sm:p-5 mb-5 border-2 border-amber-200 dark:border-slate-700">
-                <h4 class="text-xs font-extrabold uppercase tracking-wider text-amber-700 dark:text-amber-400 mb-1.5 flex items-center gap-1.5">
-                    <i class="fa-solid fa-wand-magic-sparkles"></i> Cerita & Misi Petualanganmu:
+            <!-- CRT Screen Story / Mission Box -->
+            <div class="crt-screen crt-scanlines rounded-2xl p-4 sm:p-5 mb-5 border-4 border-slate-700 text-emerald-300">
+                <h4 class="font-pixel text-[10px] uppercase tracking-wider text-amber-400 mb-2 flex items-center gap-2">
+                    <i class="fa-solid fa-terminal"></i> MISI PETUALANGAN:
                 </h4>
-                <p id="modalGameDesc" class="text-slate-700 dark:text-slate-200 text-sm sm:text-base leading-relaxed font-bold"></p>
+                <p id="modalGameDesc" class="text-slate-100 text-sm sm:text-base leading-relaxed font-bold"></p>
             </div>
 
             <!-- What Kids Will Learn -->
-            <div class="mb-6">
-                <h4 class="text-xs font-extrabold uppercase tracking-wider text-sky-600 dark:text-sky-400 mb-2.5 flex items-center gap-1.5">
-                    <i class="fa-solid fa-trophy text-amber-500"></i> Keseruan di Dalam Gim Ini:
+            <div class="mb-6 bg-white/80 dark:bg-slate-800/80 rounded-2xl p-4 border-2 border-slate-300 dark:border-slate-700">
+                <h4 class="font-pixel text-[10px] uppercase tracking-wider text-indigo-600 dark:text-cyan-400 mb-3 flex items-center gap-2">
+                    <i class="fa-solid fa-trophy text-amber-500"></i> FITUR & POWER-UP:
                 </h4>
-                <ul id="modalFunList" class="space-y-2 text-sm font-semibold text-slate-600 dark:text-slate-300"></ul>
+                <ul id="modalFunList" class="space-y-2 text-xs sm:text-sm font-bold text-slate-700 dark:text-slate-200"></ul>
             </div>
 
             <!-- Play & Share Buttons -->
             <div class="flex flex-col sm:flex-row gap-3">
-                <a id="modalPlayLink" href="#" target="_blank" rel="noopener noreferrer" onclick="earnStarReward()" class="btn-toy flex-1 inline-flex items-center justify-center gap-2.5 px-6 py-4 rounded-2xl bg-gradient-to-r from-emerald-500 to-green-500 hover:from-emerald-600 hover:to-green-600 text-white font-kids font-bold text-base sm:text-lg tracking-wide">
+                <a id="modalPlayLink" href="#" target="_blank" rel="noopener noreferrer" onclick="earnStarReward()" class="btn-arcade flex-1 inline-flex items-center justify-center gap-3 px-6 py-4 rounded-2xl bg-gradient-to-r from-emerald-500 to-green-600 hover:from-emerald-400 hover:to-green-500 text-slate-950 font-pixel text-xs sm:text-sm tracking-wide border-2 border-slate-900">
                     <i class="fa-solid fa-play"></i>
-                    <span>Ayo Main Sekarang!</span>
+                    <span>PRESS START!</span>
                 </a>
-                <button id="modalCopyBtn" type="button" class="btn-toy inline-flex items-center justify-center gap-2 px-5 py-4 rounded-2xl bg-sky-100 dark:bg-slate-800 hover:bg-sky-200 dark:hover:bg-slate-700 text-sky-800 dark:text-sky-200 font-bold text-sm">
+                <button id="modalCopyBtn" type="button" class="btn-arcade inline-flex items-center justify-center gap-2 px-5 py-4 rounded-2xl bg-amber-400 hover:bg-amber-300 text-slate-950 font-console font-bold text-sm border-2 border-slate-900">
                     <i class="fa-regular fa-copy"></i>
                     <span>Salin Link</span>
                 </button>
@@ -153,257 +196,321 @@
         </div>
     </div>
 
-    <!-- Sticky Kid-Friendly Navbar -->
-    <header class="sticky top-0 z-40 bg-white/90 dark:bg-slate-900/90 backdrop-blur-md border-b-4 border-sky-200 dark:border-slate-800">
+    <!-- Top 90s Console HUD Bar -->
+    <header class="sticky top-0 z-40 bg-slate-300/95 dark:bg-[#161233]/95 backdrop-blur-md border-b-4 border-slate-900 dark:border-indigo-500/60 shadow-lg">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between gap-3">
-            <!-- Brand Logo -->
-            <a href="#" class="flex items-center gap-3 group" onclick="playSound('pop')">
-                <div class="w-12 h-12 sm:w-14 sm:h-14 rounded-2xl bg-gradient-to-tr from-amber-400 via-orange-500 to-pink-500 flex items-center justify-center text-white text-2xl shadow-md border-2 border-white dark:border-slate-800 group-hover:scale-110 transition-transform animate-wiggle">
-                    🎮
+            <!-- Console Brand Logo -->
+            <a href="#" class="flex items-center gap-3 group" onclick="playSound('coin')">
+                <div class="w-12 h-12 sm:w-14 sm:h-14 rounded-2xl bg-gradient-to-br from-indigo-600 via-purple-600 to-pink-500 flex items-center justify-center text-white text-2xl border-4 border-slate-900 shadow-md group-hover:scale-105 transition-transform relative">
+                    🕹️
+                    <!-- Power LED -->
+                    <span class="absolute -top-1.5 -right-1.5 w-3.5 h-3.5 rounded-full bg-emerald-400 border-2 border-slate-900 animate-pulse" title="POWER ON"></span>
                 </div>
                 <div>
                     <div class="flex items-center gap-2">
-                        <span class="font-kids font-bold text-xl sm:text-2xl tracking-wide bg-gradient-to-r from-sky-600 via-purple-600 to-pink-500 dark:from-sky-400 dark:via-purple-300 dark:to-pink-400 bg-clip-text text-transparent">
-                            Gim KEREN ala Pak Rahmat
+                        <span class="font-pixel text-xs sm:text-sm md:text-base tracking-tight text-slate-900 dark:text-amber-400 drop-shadow-sm">
+                            GIM KEREN
                         </span>
-                        <span class="hidden lg:inline-flex items-center gap-1 text-[11px] font-extrabold uppercase px-2.5 py-0.5 rounded-full bg-amber-100 text-amber-800 border border-amber-300">
-                            ⭐ 8 Gim Seru!
+                        <span class="hidden sm:inline-flex items-center gap-1 font-console font-bold text-[11px] uppercase px-2 py-0.5 rounded-md bg-rose-600 text-white border border-slate-900">
+                            64-BIT EDITION
                         </span>
                     </div>
-                    <p class="text-xs text-slate-500 dark:text-slate-400 font-bold">SD Negeri 011 Balikpapan Tengah • Belajar Sambil Bermain!</p>
+                    <p class="font-console font-bold text-xs text-indigo-700 dark:text-cyan-300">
+                        ALA PAK RAHMAT • SDN 011 BALIKPAPAN TENGAH
+                    </p>
                 </div>
             </a>
 
-            <!-- Navigation Links -->
-            <nav class="hidden md:flex items-center gap-6 text-sm font-extrabold text-slate-600 dark:text-slate-300">
-                <a href="#taman-bermain" class="hover:text-sky-600 dark:hover:text-sky-400 transition">🏠 Beranda</a>
-                <a href="#daftar-gim" class="hover:text-sky-600 dark:hover:text-sky-400 transition">🕹️ Pilih 8 Gim</a>
-                <a href="#zona-bintang" class="hover:text-sky-600 dark:hover:text-sky-400 transition">🏆 Misi Anak Hebat</a>
-                <a href="#pak-rahmat" class="hover:text-sky-600 dark:hover:text-sky-400 transition">👨‍🏫 Pak Rahmat</a>
+            <!-- Console Navigation Buttons (START / SELECT Style) -->
+            <nav class="hidden lg:flex items-center gap-3 font-console font-bold text-xs uppercase tracking-wider">
+                <a href="#konsol-utama" onclick="playSound('blip')" class="px-3.5 py-2 rounded-xl bg-slate-200 dark:bg-slate-800 hover:bg-amber-400 hover:text-slate-950 border-2 border-slate-900 dark:border-slate-600 transition">
+                    🎮 Konsol Utama
+                </a>
+                <a href="#daftar-gim" onclick="playSound('blip')" class="px-3.5 py-2 rounded-xl bg-slate-200 dark:bg-slate-800 hover:bg-amber-400 hover:text-slate-950 border-2 border-slate-900 dark:border-slate-600 transition">
+                    📼 8 Kaset Gim
+                </a>
+                <a href="#zona-bintang" onclick="playSound('blip')" class="px-3.5 py-2 rounded-xl bg-slate-200 dark:bg-slate-800 hover:bg-amber-400 hover:text-slate-950 border-2 border-slate-900 dark:border-slate-600 transition">
+                    📖 Buku Manual
+                </a>
+                <a href="#pak-rahmat" onclick="playSound('blip')" class="px-3.5 py-2 rounded-xl bg-slate-200 dark:bg-slate-800 hover:bg-amber-400 hover:text-slate-950 border-2 border-slate-900 dark:border-slate-600 transition">
+                    👨‍🏫 Game Master
+                </a>
             </nav>
 
-            <!-- Action Controls -->
+            <!-- Right Console Status & Score Controls -->
             <div class="flex items-center gap-2">
-                <!-- Star Counter Pill for Kids -->
-                <div onclick="celebrateStars()" class="cursor-pointer flex items-center gap-1.5 px-3 py-2 rounded-2xl bg-amber-100 dark:bg-amber-950/90 border-2 border-amber-300 dark:border-amber-700 text-amber-800 dark:text-amber-300 font-kids font-bold text-xs sm:text-sm shadow-sm hover:scale-105 transition" title="Bintang Prestasi yang Kamu Kumpulkan!">
-                    <span class="text-base animate-pulse">⭐</span>
-                    <span id="starCounter">0</span>
-                    <span class="hidden sm:inline">Bintang</span>
+                <!-- 1-UP High Score Counter -->
+                <div onclick="celebrateStars()" class="cursor-pointer flex items-center gap-2 px-3 py-2 rounded-xl bg-slate-950 border-2 border-amber-400 text-amber-400 font-pixel text-[10px] sm:text-xs shadow-inner hover:scale-105 transition" title="Klik untuk Tambah Skor Bintang 1-UP!">
+                    <span class="text-emerald-400">1UP</span>
+                    <span>⭐<span id="starCounter">00</span></span>
                 </div>
 
-                <!-- Sound Effects Toggle -->
-                <button onclick="toggleSound()" id="soundBtn" class="w-10 h-10 rounded-2xl bg-emerald-100 dark:bg-emerald-950 border-2 border-emerald-300 dark:border-emerald-800 text-emerald-700 dark:text-emerald-300 flex items-center justify-center hover:scale-105 transition" title="Suara Efek Gim Aktif/Nonaktif" aria-label="Suara">
+                <!-- 8-Bit Chiptune Audio Toggle -->
+                <button onclick="toggleSound()" id="soundBtn" class="btn-arcade w-10 h-10 rounded-xl bg-emerald-400 text-slate-950 border-2 border-slate-900 flex items-center justify-center" title="Suara 8-Bit Chiptune ON/OFF" aria-label="Suara">
                     <i id="soundIcon" class="fa-solid fa-volume-high"></i>
                 </button>
 
-                <!-- Dark/Light Theme Toggle -->
-                <button onclick="toggleDarkMode()" class="w-10 h-10 rounded-2xl bg-sky-100 dark:bg-slate-800 border-2 border-sky-200 dark:border-slate-700 text-sky-700 dark:text-amber-300 flex items-center justify-center hover:scale-105 transition" title="Mode Siang / Malam" aria-label="Tema">
-                    <i id="themeIcon" class="fa-solid fa-moon"></i>
+                <!-- Console Shell Color Theme Toggle (Atomic Dark vs SNES Grey Light) -->
+                <button onclick="toggleDarkMode()" class="btn-arcade w-10 h-10 rounded-xl bg-amber-400 text-slate-950 border-2 border-slate-900 flex items-center justify-center" title="Ganti Casing Konsol (Gelap / Terang)" aria-label="Tema">
+                    <i id="themeIcon" class="fa-solid fa-sun"></i>
                 </button>
 
                 <!-- Mobile Hamburger -->
-                <button onclick="toggleMobileMenu()" class="md:hidden w-10 h-10 rounded-2xl bg-purple-100 dark:bg-slate-800 border-2 border-purple-200 dark:border-slate-700 text-purple-700 dark:text-purple-300 flex items-center justify-center" aria-label="Menu">
+                <button onclick="toggleMobileMenu()" class="lg:hidden btn-arcade w-10 h-10 rounded-xl bg-indigo-500 text-white border-2 border-slate-900 flex items-center justify-center" aria-label="Menu">
                     <i id="mobileMenuIcon" class="fa-solid fa-bars"></i>
                 </button>
             </div>
         </div>
 
         <!-- Mobile Menu Dropdown -->
-        <div id="mobileMenu" class="hidden md:hidden border-t-2 border-sky-100 dark:border-slate-800 bg-white dark:bg-slate-900 px-4 pt-3 pb-5 space-y-2">
-            <a href="#taman-bermain" onclick="toggleMobileMenu()" class="block px-4 py-2.5 rounded-2xl text-sm font-extrabold text-slate-700 dark:text-slate-200 hover:bg-sky-50 dark:hover:bg-slate-800">🏠 Beranda Taman Bermain</a>
-            <a href="#daftar-gim" onclick="toggleMobileMenu()" class="block px-4 py-2.5 rounded-2xl text-sm font-extrabold text-slate-700 dark:text-slate-200 hover:bg-sky-50 dark:hover:bg-slate-800">🕹️ Daftar 8 Gim Seru</a>
-            <a href="#zona-bintang" onclick="toggleMobileMenu()" class="block px-4 py-2.5 rounded-2xl text-sm font-extrabold text-slate-700 dark:text-slate-200 hover:bg-sky-50 dark:hover:bg-slate-800">🏆 Cara Jadi Anak Hebat</a>
-            <a href="#pak-rahmat" onclick="toggleMobileMenu()" class="block px-4 py-2.5 rounded-2xl text-sm font-extrabold text-slate-700 dark:text-slate-200 hover:bg-sky-50 dark:hover:bg-slate-800">👨‍🏫 Kenalan dengan Pak Rahmat</a>
-            <button onclick="toggleMobileMenu(); spinRandomGame();" class="btn-toy w-full mt-2 py-3 rounded-2xl bg-gradient-to-r from-amber-400 to-orange-500 text-slate-900 font-kids font-bold text-sm flex items-center justify-center gap-2">
+        <div id="mobileMenu" class="hidden lg:hidden border-t-4 border-slate-900 bg-slate-200 dark:bg-slate-900 px-4 pt-3 pb-5 space-y-2 font-console font-bold">
+            <a href="#konsol-utama" onclick="toggleMobileMenu()" class="block px-4 py-2.5 rounded-xl text-sm bg-white dark:bg-slate-800 border-2 border-slate-900">🎮 Konsol Utama (Layar Interaktif)</a>
+            <a href="#daftar-gim" onclick="toggleMobileMenu()" class="block px-4 py-2.5 rounded-xl text-sm bg-white dark:bg-slate-800 border-2 border-slate-900">📼 Pilih 8 Kaset Gim</a>
+            <a href="#zona-bintang" onclick="toggleMobileMenu()" class="block px-4 py-2.5 rounded-xl text-sm bg-white dark:bg-slate-800 border-2 border-slate-900">📖 Buku Manual Bermain</a>
+            <a href="#pak-rahmat" onclick="toggleMobileMenu()" class="block px-4 py-2.5 rounded-xl text-sm bg-white dark:bg-slate-800 border-2 border-slate-900">👨‍🏫 Profil Pak Rahmat</a>
+            <button onclick="toggleMobileMenu(); spinRandomGame();" class="btn-arcade w-full mt-2 py-3 rounded-xl bg-amber-400 text-slate-950 font-pixel text-xs flex items-center justify-center gap-2 border-2 border-slate-900">
                 <i class="fa-solid fa-dice"></i>
-                <span>Kocok Gim Kejutan!</span>
+                <span>ACAK KASET GIM!</span>
             </button>
         </div>
     </header>
 
-    <!-- Hero Section: Taman Bermain Anak -->
-    <section id="taman-bermain" class="relative overflow-hidden pt-8 pb-16 sm:pt-12 sm:pb-20">
-        <!-- Floating Playful Decorations -->
-        <div class="hidden sm:flex absolute top-8 left-8 text-4xl opacity-80 animate-cloud pointer-events-none select-none">☁️</div>
-        <div class="hidden sm:flex absolute top-16 right-12 text-3xl opacity-80 animate-bounce-slow pointer-events-none select-none">🌈</div>
-        <div class="hidden lg:flex absolute bottom-10 left-1/3 text-3xl opacity-75 animate-wiggle pointer-events-none select-none">🚀</div>
-
+    <!-- Hero Section: 90s-2000s Handheld & TV Game Console Experience -->
+    <section id="konsol-utama" class="relative overflow-hidden pt-8 pb-16 sm:pt-12 sm:pb-20">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
             <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
-                <!-- Left Hero Content -->
-                <div class="lg:col-span-7 text-center lg:text-left">
-                    <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-amber-300/90 dark:bg-amber-500/20 border-2 border-amber-500 text-slate-900 dark:text-amber-300 text-xs sm:text-sm font-extrabold mb-6 shadow-sm">
-                        <span class="text-base">🎉</span>
-                        <span>Selamat Datang di Dunia Bermain Anak Pintar!</span>
+
+                <!-- Left Column: Retro Arcade Title & Creator Cartridge Info -->
+                <div class="lg:col-span-6 text-center lg:text-left">
+                    <div class="inline-flex items-center gap-2.5 px-4 py-2 rounded-xl bg-slate-950 text-emerald-400 border-2 border-indigo-500 font-pixel text-[10px] sm:text-xs mb-6 shadow-md">
+                        <span class="w-2.5 h-2.5 rounded-full bg-rose-500 animate-ping"></span>
+                        <span>PLAYER 1 READY • INSERT COIN</span>
                     </div>
 
-                    <h1 class="font-kids font-bold text-4xl sm:text-5xl lg:text-6xl text-slate-900 dark:text-white leading-[1.15] mb-5">
-                        Petualangan Seru di <br class="hidden sm:inline">
-                        <span class="bg-gradient-to-r from-sky-500 via-purple-600 to-pink-500 dark:from-sky-400 dark:via-purple-400 dark:to-pink-400 bg-clip-text text-transparent">
-                            Gim KEREN ala Pak Rahmat!
+                    <h1 class="font-pixel text-2xl sm:text-4xl lg:text-[40px] text-slate-900 dark:text-white leading-[1.35] mb-4">
+                        GIM KEREN <br>
+                        <span class="text-transparent bg-clip-text bg-gradient-to-r from-amber-400 via-pink-500 to-cyan-400">
+                            ALA PAK RAHMAT
                         </span>
                     </h1>
 
-                    <p class="text-slate-600 dark:text-slate-300 text-base sm:text-lg font-bold leading-relaxed max-w-2xl mx-auto lg:mx-0 mb-7">
-                        Halo Anak-Anak Hebat! Yuk pilih petualangan favoritmu hari ini! Kita bisa mengumpulkan <strong>Bintang Prestasi</strong>, berpetualang dengan <strong>Angka & Pecahan</strong>, menjaga <strong>Rimba & Cerita</strong>, melaju bersama <strong>Tetes Air</strong>, bertarung di <strong>Liga Pahlawan FPB & KPK</strong>, hingga <strong>Balap Baca</strong> bersama teman-teman! 🌟
+                    <div class="inline-block px-3 py-1 rounded-lg bg-indigo-600 text-white font-console font-bold text-xs sm:text-sm uppercase tracking-widest mb-5 border-2 border-slate-900">
+                        ⚡ Edisi Konsol Klasik 90an - 2000an • 8-in-1 Super Cartridge ⚡
+                    </div>
+
+                    <p class="text-slate-700 dark:text-slate-300 text-base sm:text-lg font-bold leading-relaxed max-w-2xl mx-auto lg:mx-0 mb-7">
+                        Selamat datang di arena konsol edukasi! Pilih kaset gim favoritmu: kumpulkan <strong>Bintang Prestasi</strong>, taklukkan <strong>Petualangan Angka</strong>, lindungi <strong>Rimba & Cerita</strong>, lompat bersama <strong>Super Pika Bros (Pecahan)</strong>, melaju di <strong>Tetes Melaju</strong>, bertarung di <strong>Liga Pahlawan FPB & KPK</strong>, hingga <strong>Balap Baca</strong>!
                     </p>
 
-                    <!-- Friendly Creator Pill Badge -->
-                    <div class="inline-flex flex-wrap items-center justify-center lg:justify-start gap-3.5 p-3 pr-5 rounded-3xl bg-white dark:bg-slate-900 border-4 border-sky-200 dark:border-slate-800 shadow-md mb-8">
-                        <img
-                            src="https://i.imgur.com/YbvvB0o.jpeg"
-                            alt="Pak Abdul Rahmat, S.Pd"
-                            referrerpolicy="no-referrer"
-                            onerror="this.onerror=null;this.src='https://placehold.co/100x100/0ea5e9/ffffff?text=Pak+Rahmat';"
-                            class="w-13 h-13 w-12 h-12 rounded-2xl object-cover object-top border-2 border-amber-400 shadow-sm"
-                        >
+                    <!-- Creator Badge Styled like a 90s Player ID Card -->
+                    <div class="inline-flex flex-wrap items-center justify-center lg:justify-start gap-4 p-3.5 pr-6 rounded-2xl bg-slate-100 dark:bg-slate-900/95 border-4 border-slate-900 dark:border-indigo-500 shadow-xl mb-8">
+                        <div class="relative">
+                            <img
+                                src="https://i.imgur.com/YbvvB0o.jpeg"
+                                alt="Pak Abdul Rahmat, S.Pd"
+                                referrerpolicy="no-referrer"
+                                onerror="this.onerror=null;this.src='https://placehold.co/100x100/4f46e5/ffffff?text=Pak+Rahmat';"
+                                class="w-14 h-14 rounded-xl object-cover object-top border-2 border-amber-400 shadow-sm"
+                            >
+                            <span class="absolute -bottom-1 -right-1 px-1.5 py-0.2 rounded bg-amber-400 text-slate-950 font-pixel text-[8px] border border-slate-900">GM</span>
+                        </div>
                         <div class="text-left">
-                            <p class="text-xs text-sky-600 dark:text-sky-400 font-extrabold">Dibuat dengan penuh semangat oleh:</p>
-                            <p class="text-sm font-black text-slate-900 dark:text-white">Pak Abdul Rahmat, S.Pd <span class="font-bold text-slate-500 dark:text-slate-400">• SDN 011 Balikpapan Tengah</span></p>
+                            <p class="font-pixel text-[9px] text-indigo-600 dark:text-amber-400 uppercase">GAME MASTER / CREATOR:</p>
+                            <p class="font-console font-bold text-base text-slate-900 dark:text-white mt-0.5">Abdul Rahmat, S.Pd</p>
+                            <p class="text-xs font-bold text-slate-600 dark:text-slate-400">SD Negeri 011 Balikpapan Tengah • 081351767574</p>
                         </div>
                     </div>
 
-                    <!-- Big Playful CTA Buttons -->
+                    <!-- Arcade Action Buttons -->
                     <div class="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4">
-                        <a href="#daftar-gim" onclick="playSound('fanfare')" class="btn-toy w-full sm:w-auto inline-flex items-center justify-center gap-3 px-8 py-4 rounded-3xl bg-gradient-to-r from-emerald-500 to-green-500 hover:from-emerald-600 hover:to-green-600 text-white font-kids font-bold text-lg tracking-wide border-2 border-emerald-300">
-                            <span class="text-xl">🚀</span>
-                            <span>Ayo Pilih Gimmu! (8 Gim)</span>
+                        <a href="#daftar-gim" onclick="playSound('powerup')" class="btn-arcade w-full sm:w-auto inline-flex items-center justify-center gap-3 px-7 py-4 rounded-2xl bg-gradient-to-r from-emerald-400 to-green-500 text-slate-950 font-pixel text-xs sm:text-sm border-2 border-slate-900">
+                            <i class="fa-solid fa-gamepad text-base"></i>
+                            <span>PILIH KASET (8 GIM)</span>
                         </a>
-                        <button onclick="spinRandomGame()" class="btn-toy w-full sm:w-auto inline-flex items-center justify-center gap-2.5 px-7 py-4 rounded-3xl bg-gradient-to-r from-amber-400 to-orange-400 hover:from-amber-500 hover:to-orange-500 text-slate-900 font-kids font-bold text-lg border-2 border-amber-200">
-                            <span class="text-xl">🎲</span>
-                            <span>Kocok Gim Kejutan!</span>
+                        <button onclick="spinRandomGame()" class="btn-arcade w-full sm:w-auto inline-flex items-center justify-center gap-3 px-6 py-4 rounded-2xl bg-gradient-to-r from-amber-400 to-orange-500 text-slate-950 font-pixel text-xs sm:text-sm border-2 border-slate-900">
+                            <i class="fa-solid fa-dice text-base"></i>
+                            <span>ACAK KASET!</span>
                         </button>
                     </div>
                 </div>
 
-                <!-- Right Column: Interactive Treasure Map / Worlds Preview -->
-                <div class="lg:col-span-5">
-                    <div class="bg-white dark:bg-slate-900 rounded-[2.2rem] border-4 border-sky-300 dark:border-slate-800 p-6 sm:p-7 shadow-2xl relative">
-                        <!-- Floating Mascot Badge -->
-                        <div class="absolute -top-5 -right-3 bg-gradient-to-r from-pink-500 to-rose-500 text-white font-kids font-bold text-xs sm:text-sm px-4 py-1.5 rounded-full shadow-lg border-2 border-white rotate-6">
-                            ✨ 100% Seru & Gratis!
-                        </div>
+                <!-- Right Column: Interactive 90s/2000s Handheld Console ("RAHMAT-BOY ADVANCE 2000") -->
+                <div class="lg:col-span-6">
+                    <div class="bg-gradient-to-b from-indigo-600 via-purple-700 to-indigo-900 p-5 sm:p-7 rounded-[2.8rem] border-4 border-slate-950 shadow-[0_18px_0_#090d16] relative max-w-xl mx-auto">
 
-                        <div class="flex items-center gap-3 pb-4 mb-5 border-b-2 border-dashed border-sky-100 dark:border-slate-800">
-                            <div class="w-10 h-10 rounded-2xl bg-amber-100 dark:bg-amber-950 flex items-center justify-center text-xl">
-                                🗺️
+                        <!-- Console Top Shell Details (Power LED & Model Name) -->
+                        <div class="flex items-center justify-between mb-3 px-2">
+                            <div class="flex items-center gap-2">
+                                <span class="w-3 h-3 rounded-full bg-red-500 border border-slate-950 shadow-[0_0_8px_#ef4444]"></span>
+                                <span class="font-pixel text-[9px] text-indigo-200 tracking-wider">BATTERY OK</span>
                             </div>
-                            <div>
-                                <h2 class="font-kids font-bold text-lg text-slate-900 dark:text-white leading-none">Peta Dunia Permainan</h2>
-                                <p class="text-xs font-bold text-slate-500 dark:text-slate-400 mt-1">Klik salah satu dunia untuk memilih gim!</p>
-                            </div>
-                        </div>
-
-                        <!-- 3 Fun Kid Worlds -->
-                        <div class="space-y-3.5">
-                            <!-- World 1: Dunia Angka & Pahlawan Matematika -->
-                            <div onclick="filterGames('angka'); document.getElementById('daftar-gim').scrollIntoView({behavior: 'smooth'});" class="cursor-pointer group p-4 rounded-3xl bg-sky-50 dark:bg-slate-800/70 hover:bg-sky-100 dark:hover:bg-sky-950/50 border-2 border-sky-200 dark:border-slate-700 transition flex items-center gap-4">
-                                <div class="w-14 h-14 rounded-2xl bg-gradient-to-br from-sky-400 to-blue-600 text-white flex items-center justify-center text-2xl shrink-0 shadow-md group-hover:scale-110 transition">
-                                    🔢
-                                </div>
-                                <div class="flex-1 min-w-0">
-                                    <div class="flex items-center justify-between">
-                                        <h3 class="font-kids font-bold text-base text-slate-900 dark:text-white group-hover:text-sky-600 dark:group-hover:text-sky-400">Dunia Angka & Matematika</h3>
-                                        <span class="text-xs font-extrabold px-2.5 py-0.5 rounded-full bg-sky-200 dark:bg-sky-900 text-sky-800 dark:text-sky-200">3 Gim</span>
-                                    </div>
-                                    <p class="text-xs font-bold text-slate-500 dark:text-slate-400 truncate mt-1">Petualangan Angka, Super Pika Bros (Pecahan), Liga Pahlawan FPB KPK</p>
-                                </div>
-                            </div>
-
-                            <!-- World 2: Dunia Cerita & Balap Baca -->
-                            <div onclick="filterGames('baca'); document.getElementById('daftar-gim').scrollIntoView({behavior: 'smooth'});" class="cursor-pointer group p-4 rounded-3xl bg-rose-50 dark:bg-slate-800/70 hover:bg-rose-100 dark:hover:bg-rose-950/50 border-2 border-rose-200 dark:border-slate-700 transition flex items-center gap-4">
-                                <div class="w-14 h-14 rounded-2xl bg-gradient-to-br from-pink-500 to-rose-500 text-white flex items-center justify-center text-2xl shrink-0 shadow-md group-hover:scale-110 transition">
-                                    📖
-                                </div>
-                                <div class="flex-1 min-w-0">
-                                    <div class="flex items-center justify-between">
-                                        <h3 class="font-kids font-bold text-base text-slate-900 dark:text-white group-hover:text-rose-600 dark:group-hover:text-rose-400">Dunia Cerita & Membaca</h3>
-                                        <span class="text-xs font-extrabold px-2.5 py-0.5 rounded-full bg-rose-200 dark:bg-rose-900 text-rose-800 dark:text-rose-200">2 Gim</span>
-                                    </div>
-                                    <p class="text-xs font-bold text-slate-500 dark:text-slate-400 truncate mt-1">Gim Penjaga Cerita & Gim Balap Baca</p>
-                                </div>
-                            </div>
-
-                            <!-- World 3: Dunia Alam, Sains & Bintang -->
-                            <div onclick="filterGames('petualangan'); document.getElementById('daftar-gim').scrollIntoView({behavior: 'smooth'});" class="cursor-pointer group p-4 rounded-3xl bg-emerald-50 dark:bg-slate-800/70 hover:bg-emerald-100 dark:hover:bg-emerald-950/50 border-2 border-emerald-200 dark:border-slate-700 transition flex items-center gap-4">
-                                <div class="w-14 h-14 rounded-2xl bg-gradient-to-br from-emerald-400 to-teal-600 text-white flex items-center justify-center text-2xl shrink-0 shadow-md group-hover:scale-110 transition">
-                                    🌳
-                                </div>
-                                <div class="flex-1 min-w-0">
-                                    <div class="flex items-center justify-between">
-                                        <h3 class="font-kids font-bold text-base text-slate-900 dark:text-white group-hover:text-emerald-600 dark:group-hover:text-emerald-400">Dunia Alam & Bintang Prestasi</h3>
-                                        <span class="text-xs font-extrabold px-2.5 py-0.5 rounded-full bg-emerald-200 dark:bg-emerald-900 text-emerald-800 dark:text-emerald-200">3 Gim</span>
-                                    </div>
-                                    <p class="text-xs font-bold text-slate-500 dark:text-slate-400 truncate mt-1">Bintang Prestasi, Penjaga Rimba & Tetes Melaju</p>
-                                </div>
+                            <span class="font-console font-extrabold text-xs tracking-widest text-amber-300 uppercase">
+                                ★ SUPER RAHMAT-BOY 2000 ★
+                            </span>
+                            <div class="flex gap-1">
+                                <span class="w-1.5 h-4 rounded-full bg-slate-900/60"></span>
+                                <span class="w-1.5 h-4 rounded-full bg-slate-900/60"></span>
+                                <span class="w-1.5 h-4 rounded-full bg-slate-900/60"></span>
                             </div>
                         </div>
 
-                        <!-- Mini Interactive Reward Banner -->
-                        <div class="mt-5 p-3.5 rounded-2xl bg-gradient-to-r from-amber-100 via-yellow-100 to-orange-100 dark:from-amber-950/60 dark:to-orange-950/60 border-2 border-amber-300 dark:border-amber-800 flex items-center justify-between gap-3">
-                            <div class="flex items-center gap-2.5">
-                                <span class="text-2xl">🏅</span>
-                                <p class="text-xs font-extrabold text-amber-900 dark:text-amber-200">
-                                    Mainkan gimnya dan kumpulkan bintang sebanyak-banyaknya!
-                                </p>
+                        <!-- Console Screen Bezel -->
+                        <div class="bg-slate-800 p-4 sm:p-5 rounded-3xl border-4 border-slate-950 shadow-inner">
+                            <!-- CRT / LCD Screen Display -->
+                            <div id="consoleScreen" class="crt-screen crt-scanlines rounded-2xl p-4 sm:p-5 border-4 border-slate-950 min-h-[230px] flex flex-col justify-between text-white relative overflow-hidden">
+                                <!-- Top Screen HUD -->
+                                <div class="flex items-center justify-between border-b border-slate-700/80 pb-2 text-[10px] font-pixel text-cyan-300">
+                                    <span id="screenSlotText">CARTRIDGE 01/08</span>
+                                    <span id="screenCategoryText" class="text-amber-400">ALAM & BINTANG</span>
+                                </div>
+
+                                <!-- Center Game Preview on Screen -->
+                                <div class="my-4 flex flex-col sm:flex-row items-center gap-4 text-center sm:text-left">
+                                    <div id="screenEmojiBox" class="w-16 h-16 sm:w-20 sm:h-20 rounded-2xl bg-gradient-to-br from-amber-400 to-orange-500 border-4 border-white flex items-center justify-center text-4xl shadow-lg animate-pixel-float shrink-0">
+                                        🌟
+                                    </div>
+                                    <div class="flex-1 min-w-0">
+                                        <div class="inline-block px-2 py-0.5 rounded bg-emerald-500/20 border border-emerald-400 text-emerald-300 font-pixel text-[8px] mb-1.5 animate-blink">
+                                            READY TO PLAY!
+                                        </div>
+                                        <h2 id="screenGameTitle" class="font-console font-extrabold text-xl sm:text-2xl text-white leading-tight">
+                                            Gim Bintang Prestasi
+                                        </h2>
+                                        <p id="screenGameDesc" class="text-xs sm:text-sm text-slate-300 font-semibold mt-1 line-clamp-2">
+                                            Ayo kumpulkan bintang prestasi sebanyak-banyaknya! Jawab tantangan seru dan buktikan kamu adalah Anak Hebat!
+                                        </p>
+                                    </div>
+                                </div>
+
+                                <!-- Bottom Screen Prompt -->
+                                <div class="flex items-center justify-between pt-2 border-t border-slate-700/80 font-pixel text-[9px]">
+                                    <span class="text-emerald-400">◀ ▶ GANTI GIM</span>
+                                    <span class="text-amber-300 animate-blink">TEKAN [A] / START UNTUK MAIN!</span>
+                                </div>
                             </div>
-                            <button onclick="earnStarReward()" class="shrink-0 px-3 py-1.5 rounded-xl bg-amber-400 hover:bg-amber-500 text-slate-900 font-kids font-bold text-xs shadow-sm">
-                                +1 ⭐
-                            </button>
+
+                            <!-- Screen Brand Label -->
+                            <div class="text-center mt-2.5 flex items-center justify-center gap-2">
+                                <span class="font-pixel text-[10px] tracking-widest text-slate-300">DOT MATRIX WITH STEREO SOUND</span>
+                            </div>
+                        </div>
+
+                        <!-- Physical Console Controls: D-Pad + A/B Buttons + Start/Select -->
+                        <div class="mt-6 grid grid-cols-12 items-center gap-2 px-2">
+                            <!-- Left: Classic Cross D-Pad -->
+                            <div class="col-span-5 flex flex-col items-center">
+                                <div class="grid grid-cols-3 gap-1 w-28 h-28">
+                                    <div></div>
+                                    <button onclick="prevConsoleGame()" class="btn-abxy bg-slate-800 hover:bg-slate-700 text-slate-200 rounded-t-lg border-2 border-slate-950 flex items-center justify-center active:bg-amber-400 active:text-slate-950" title="Gim Sebelumnya" aria-label="Atas">
+                                        <i class="fa-solid fa-caret-up"></i>
+                                    </button>
+                                    <div></div>
+
+                                    <button onclick="prevConsoleGame()" class="btn-abxy bg-slate-800 hover:bg-slate-700 text-slate-200 rounded-l-lg border-2 border-slate-950 flex items-center justify-center active:bg-amber-400 active:text-slate-950" title="Gim Sebelumnya" aria-label="Kiri">
+                                        <i class="fa-solid fa-caret-left"></i>
+                                    </button>
+                                    <div class="bg-slate-800 border-y-2 border-slate-950 flex items-center justify-center">
+                                        <div class="w-3.5 h-3.5 rounded-full bg-slate-900"></div>
+                                    </div>
+                                    <button onclick="nextConsoleGame()" class="btn-abxy bg-slate-800 hover:bg-slate-700 text-slate-200 rounded-r-lg border-2 border-slate-950 flex items-center justify-center active:bg-amber-400 active:text-slate-950" title="Gim Berikutnya" aria-label="Kanan">
+                                        <i class="fa-solid fa-caret-right"></i>
+                                    </button>
+
+                                    <div></div>
+                                    <button onclick="nextConsoleGame()" class="btn-abxy bg-slate-800 hover:bg-slate-700 text-slate-200 rounded-b-lg border-2 border-slate-950 flex items-center justify-center active:bg-amber-400 active:text-slate-950" title="Gim Berikutnya" aria-label="Bawah">
+                                        <i class="fa-solid fa-caret-down"></i>
+                                    </button>
+                                    <div></div>
+                                </div>
+                                <span class="font-pixel text-[8px] text-indigo-200 mt-2">PILIH KASET</span>
+                            </div>
+
+                            <!-- Center: SELECT & START Rubber Pill Buttons -->
+                            <div class="col-span-2 flex flex-col items-center justify-center gap-3">
+                                <button onclick="spinRandomGame()" class=" group flex flex-col items-center" title="Acak Kaset Gim">
+                                    <div class="w-10 h-3.5 rounded-full bg-slate-800 group-hover:bg-amber-400 border-2 border-slate-950 shadow-md transform -rotate-12 transition"></div>
+                                    <span class="font-pixel text-[7px] text-indigo-200 mt-1">SELECT</span>
+                                </button>
+                                <button onclick="launchCurrentConsoleGame()" class="group flex flex-col items-center" title="Mainkan Gim Ini">
+                                    <div class="w-10 h-3.5 rounded-full bg-emerald-500 group-hover:bg-emerald-400 border-2 border-slate-950 shadow-md transform -rotate-12 transition"></div>
+                                    <span class="font-pixel text-[7px] text-amber-300 mt-1">START</span>
+                                </button>
+                            </div>
+
+                            <!-- Right: Super Famicom / Game Boy A & B Buttons -->
+                            <div class="col-span-5 flex flex-col items-center">
+                                <div class="flex items-center gap-3 sm:gap-4 -rotate-12 bg-indigo-950/60 px-4 py-3 rounded-full border-2 border-indigo-400/30">
+                                    <!-- B Button (Info) -->
+                                    <div class="flex flex-col items-center">
+                                        <button onclick="inspectCurrentConsoleGame()" class="btn-abxy w-12 h-12 sm:w-14 sm:h-14 rounded-full bg-amber-400 hover:bg-amber-300 text-slate-950 font-pixel text-xs sm:text-sm border-2 border-slate-950 flex items-center justify-center" title="Lihat Info Kaset Gim">
+                                            B
+                                        </button>
+                                        <span class="font-pixel text-[8px] text-amber-300 mt-1.5">INFO</span>
+                                    </div>
+                                    <!-- A Button (Launch Game) -->
+                                    <div class="flex flex-col items-center -mt-4">
+                                        <button onclick="launchCurrentConsoleGame()" class="btn-abxy w-12 h-12 sm:w-14 sm:h-14 rounded-full bg-rose-500 hover:bg-rose-400 text-white font-pixel text-xs sm:text-sm border-2 border-slate-950 flex items-center justify-center" title="Mainkan Gim Sekarang!">
+                                            A
+                                        </button>
+                                        <span class="font-pixel text-[8px] text-rose-300 mt-1.5">MAIN!</span>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
+
             </div>
         </div>
     </section>
 
-    <!-- Main 8 Games Section -->
-    <section id="daftar-gim" class="py-16 bg-white/85 dark:bg-slate-900/80 border-y-4 border-sky-200 dark:border-slate-800">
+    <!-- Main 8 Game Cartridges Section -->
+    <section id="daftar-gim" class="py-16 bg-slate-300/70 dark:bg-[#120f2e] border-y-4 border-slate-900 dark:border-indigo-500/50">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <!-- Section Header -->
             <div class="text-center max-w-3xl mx-auto mb-10">
-                <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-purple-100 dark:bg-purple-950 text-purple-700 dark:text-purple-300 text-xs font-extrabold uppercase tracking-wider mb-3">
-                    <span>🕹️ Koleksi Lengkap 8 Gim Anak Hebat</span>
+                <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-lg bg-slate-950 text-amber-400 font-pixel text-[10px] uppercase tracking-wider mb-3 border-2 border-amber-400">
+                    <span>📼 KOLEKSI 8 KASET GIM RESMI (ROM PACK)</span>
                 </div>
-                <h2 class="font-kids font-bold text-3xl sm:text-5xl text-slate-900 dark:text-white mb-3">
-                    Ayo Pilih Gim Favoritmu!
+                <h2 class="font-pixel text-xl sm:text-3xl text-slate-900 dark:text-white mb-3 leading-snug">
+                    PILIH KASET PETUALANGANMU!
                 </h2>
-                <p class="text-slate-600 dark:text-slate-400 text-sm sm:text-base font-bold">
-                    Klik tombol hijau <strong>"Ayo Main!"</strong> pada kartu di bawah ini untuk langsung memulai petualangan seru.
+                <p class="text-slate-700 dark:text-slate-300 text-sm sm:text-base font-bold">
+                    Setiap kaset gim berisi misi seru buatan <strong>Pak Rahmat</strong>. Klik tombol <strong>"PRESS START"</strong> untuk langsung bermain!
                 </p>
             </div>
 
-            <!-- Kid-Friendly Filter & Search Bar -->
-            <div class="bg-sky-50 dark:bg-slate-800/90 p-4 sm:p-5 rounded-[2rem] border-4 border-sky-200 dark:border-slate-700 mb-10 shadow-sm">
+            <!-- Retro Console Filter & Search Deck -->
+            <div class="bg-slate-200 dark:bg-slate-900 p-4 sm:p-5 rounded-3xl border-4 border-slate-900 dark:border-indigo-500/70 mb-10 shadow-xl">
                 <div class="flex flex-col lg:flex-row gap-4 items-stretch lg:items-center justify-between">
                     <!-- Category Filter Buttons -->
                     <div class="flex items-center gap-2.5 overflow-x-auto pb-1 lg:pb-0 no-scrollbar" id="categoryButtons">
-                        <button onclick="filterGames('semua')" data-cat="semua" class="cat-pill btn-toy shrink-0 px-4 py-2.5 rounded-2xl text-xs sm:text-sm font-kids font-bold transition flex items-center gap-2 bg-sky-500 text-white">
-                            <span>🌈 Semua Gim (8)</span>
+                        <button onclick="filterGames('semua')" data-cat="semua" class="cat-pill btn-arcade shrink-0 px-4 py-2.5 rounded-xl text-xs font-console font-extrabold uppercase tracking-wider transition flex items-center gap-2 bg-amber-400 text-slate-950 border-2 border-slate-900">
+                            <span>🕹️ SEMUA KASET (8)</span>
                         </button>
-                        <button onclick="filterGames('angka')" data-cat="angka" class="cat-pill btn-toy shrink-0 px-4 py-2.5 rounded-2xl text-xs sm:text-sm font-kids font-bold transition flex items-center gap-2 bg-white dark:bg-slate-900 text-slate-700 dark:text-slate-200 border-2 border-sky-200 dark:border-slate-700">
-                            <span>🔢 Angka & Matematika (3)</span>
+                        <button onclick="filterGames('angka')" data-cat="angka" class="cat-pill btn-arcade shrink-0 px-4 py-2.5 rounded-xl text-xs font-console font-extrabold uppercase tracking-wider transition flex items-center gap-2 bg-white dark:bg-slate-800 text-slate-800 dark:text-slate-200 border-2 border-slate-900">
+                            <span>🔢 DUNIA ANGKA (3)</span>
                         </button>
-                        <button onclick="filterGames('baca')" data-cat="baca" class="cat-pill btn-toy shrink-0 px-4 py-2.5 rounded-2xl text-xs sm:text-sm font-kids font-bold transition flex items-center gap-2 bg-white dark:bg-slate-900 text-slate-700 dark:text-slate-200 border-2 border-sky-200 dark:border-slate-700">
-                            <span>📖 Cerita & Baca (2)</span>
+                        <button onclick="filterGames('baca')" data-cat="baca" class="cat-pill btn-arcade shrink-0 px-4 py-2.5 rounded-xl text-xs font-console font-extrabold uppercase tracking-wider transition flex items-center gap-2 bg-white dark:bg-slate-800 text-slate-800 dark:text-slate-200 border-2 border-slate-900">
+                            <span>📖 CERITA & BACA (2)</span>
                         </button>
-                        <button onclick="filterGames('petualangan')" data-cat="petualangan" class="cat-pill btn-toy shrink-0 px-4 py-2.5 rounded-2xl text-xs sm:text-sm font-kids font-bold transition flex items-center gap-2 bg-white dark:bg-slate-900 text-slate-700 dark:text-slate-200 border-2 border-sky-200 dark:border-slate-700">
-                            <span>🌳 Alam & Bintang (3)</span>
+                        <button onclick="filterGames('petualangan')" data-cat="petualangan" class="cat-pill btn-arcade shrink-0 px-4 py-2.5 rounded-xl text-xs font-console font-extrabold uppercase tracking-wider transition flex items-center gap-2 bg-white dark:bg-slate-800 text-slate-800 dark:text-slate-200 border-2 border-slate-900">
+                            <span>🌳 ALAM & BINTANG (3)</span>
                         </button>
-                        <button onclick="filterGames('favorit')" data-cat="favorit" class="cat-pill btn-toy shrink-0 px-4 py-2.5 rounded-2xl text-xs sm:text-sm font-kids font-bold transition flex items-center gap-2 bg-white dark:bg-slate-900 text-slate-700 dark:text-slate-200 border-2 border-sky-200 dark:border-slate-700">
-                            <span>❤️ Disukai (<span id="favCountBadge">0</span>)</span>
+                        <button onclick="filterGames('favorit')" data-cat="favorit" class="cat-pill btn-arcade shrink-0 px-4 py-2.5 rounded-xl text-xs font-console font-extrabold uppercase tracking-wider transition flex items-center gap-2 bg-white dark:bg-slate-800 text-slate-800 dark:text-slate-200 border-2 border-slate-900">
+                            <span>❤️ MEMORY CARD (<span id="favCountBadge">0</span>)</span>
                         </button>
                     </div>
 
                     <!-- Search Box -->
                     <div class="relative w-full lg:w-72">
-                        <i class="fa-solid fa-magnifying-glass absolute left-4 top-1/2 -translate-y-1/2 text-sky-500 text-sm"></i>
+                        <i class="fa-solid fa-magnifying-glass absolute left-4 top-1/2 -translate-y-1/2 text-indigo-500 text-sm"></i>
                         <input
                             id="searchInput"
                             type="text"
                             oninput="handleSearch(this.value)"
-                            placeholder="Cari Pika Bros, Angka, Baca..."
-                            class="w-full pl-10 pr-9 py-3 rounded-2xl bg-white dark:bg-slate-900 border-2 border-sky-200 dark:border-slate-700 text-sm font-bold text-slate-800 dark:text-slate-100 placeholder-slate-400 focus:outline-none focus:border-sky-500 transition"
+                            placeholder="Cari kaset: Pika, Angka, Baca..."
+                            class="w-full pl-10 pr-9 py-2.5 rounded-xl bg-white dark:bg-slate-950 border-2 border-slate-900 dark:border-indigo-500 text-sm font-bold text-slate-900 dark:text-amber-300 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-amber-400 transition"
                         >
                         <button id="clearSearchBtn" onclick="clearSearch()" class="hidden absolute right-3 top-1/2 -translate-y-1/2 text-slate-400 hover:text-rose-500">
                             <i class="fa-solid fa-circle-xmark"></i>
@@ -412,159 +519,160 @@
                 </div>
             </div>
 
-            <!-- 8 Games Grid Container -->
+            <!-- 8 Game Cartridges Grid Container -->
             <div id="gamesGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-7">
                 <!-- Populated dynamically via JS -->
             </div>
 
             <!-- Empty State -->
-            <div id="emptyState" class="hidden text-center py-14 px-4 rounded-[2rem] bg-amber-50 dark:bg-slate-800/60 border-4 border-dashed border-amber-300 dark:border-slate-700">
-                <div class="text-5xl mb-3">🔍</div>
-                <h3 class="font-kids font-bold text-xl text-slate-800 dark:text-slate-200 mb-1">Ups, Gimnya Belum Ketemu!</h3>
-                <p id="emptyStateMsg" class="text-sm font-bold text-slate-500 dark:text-slate-400 max-w-md mx-auto mb-5">
-                    Coba ketik kata lain atau klik tombol di bawah untuk melihat semua 8 gim seru.
+            <div id="emptyState" class="hidden text-center py-14 px-4 rounded-3xl bg-slate-900 border-4 border-dashed border-amber-400 text-white">
+                <div class="text-5xl mb-3">👾</div>
+                <h3 class="font-pixel text-sm sm:text-base text-amber-400 mb-2">KASET GIM TIDAK DITEMUKAN!</h3>
+                <p id="emptyStateMsg" class="text-sm font-bold text-slate-300 max-w-md mx-auto mb-6">
+                    Coba ketik kata kunci lain atau tekan tombol RESET di bawah untuk menampilkan seluruh 8 kaset gim.
                 </p>
-                <button onclick="resetFilters()" class="btn-toy inline-flex items-center gap-2 px-6 py-3 rounded-2xl bg-sky-500 hover:bg-sky-600 text-white font-kids font-bold text-sm">
+                <button onclick="resetFilters()" class="btn-arcade inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-amber-400 text-slate-950 font-pixel text-xs border-2 border-slate-950">
                     <i class="fa-solid fa-rotate-left"></i>
-                    <span>Tampilkan Semua 8 Gim</span>
+                    <span>RESET SEMUA KASET</span>
                 </button>
             </div>
         </div>
     </section>
 
-    <!-- Zona Anak Hebat / How to Play Section -->
+    <!-- Instruction Manual Section (Buku Manual Konsol 90an) -->
     <section id="zona-bintang" class="py-16 sm:py-20">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center max-w-3xl mx-auto mb-12">
-                <span class="text-xs font-extrabold uppercase tracking-wider px-4 py-1.5 rounded-full bg-amber-200 dark:bg-amber-950 text-amber-900 dark:text-amber-300">
-                    🌟 Misi Anak Hebat Indonesia
+                <span class="font-pixel text-[10px] uppercase tracking-wider px-4 py-1.5 rounded-lg bg-indigo-600 text-white border-2 border-slate-900">
+                    📖 INSTRUCTION BOOKLET
                 </span>
-                <h2 class="font-kids font-bold text-3xl sm:text-4xl text-slate-900 dark:text-white mt-3 mb-3">
-                    3 Langkah Seru Bermain Bersama Pak Rahmat!
+                <h2 class="font-pixel text-xl sm:text-3xl text-slate-900 dark:text-white mt-4 mb-3 leading-snug">
+                    CARA JADI PLAYER JUARA!
                 </h2>
-                <p class="text-slate-600 dark:text-slate-400 text-sm sm:text-base font-bold">
-                    Setiap gim dirancang agar anak-anak senang belajar, berani mencoba, dan makin pintar setiap hari.
+                <p class="text-slate-700 dark:text-slate-300 text-sm sm:text-base font-bold">
+                    Ikuti 3 panduan di buku manual ini untuk menaklukkan seluruh level dan mengumpulkan skor tertinggi.
                 </p>
             </div>
 
             <div class="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8">
-                <!-- Step 1 -->
-                <div class="toy-card bg-white dark:bg-slate-900 p-7 rounded-[2rem] border-4 border-sky-300 dark:border-sky-800 text-center relative">
-                    <div class="w-16 h-16 rounded-3xl bg-sky-100 dark:bg-sky-950 text-3xl flex items-center justify-center mx-auto mb-4 shadow-sm border-2 border-sky-300">
-                        🎯
+                <!-- Stage 1 -->
+                <div class="cartridge-card bg-slate-100 dark:bg-slate-900 p-6 rounded-3xl border-4 border-slate-900 dark:border-cyan-400 relative overflow-hidden">
+                    <div class="flex items-center justify-between mb-4 pb-3 border-b-2 border-dashed border-slate-300 dark:border-slate-700">
+                        <span class="font-pixel text-xs text-cyan-600 dark:text-cyan-400">STAGE 01</span>
+                        <span class="text-2xl">📼</span>
                     </div>
-                    <span class="inline-block text-xs font-extrabold uppercase px-3 py-0.5 rounded-full bg-sky-100 dark:bg-sky-950 text-sky-700 dark:text-sky-300 mb-2">Langkah 1</span>
-                    <h3 class="font-kids font-bold text-xl text-slate-900 dark:text-white mb-2">Pilih Dunia Petualangan</h3>
-                    <p class="text-sm font-bold text-slate-600 dark:text-slate-400 leading-relaxed">
-                        Mau berhitung pecahan bareng <strong>Super Pika Bros</strong>, menjaga hutan di <strong>Penjaga Rimba</strong>, atau adu cepat di <strong>Balap Baca</strong>? Pilih sesuka hatimu!
+                    <h3 class="font-console font-extrabold text-xl text-slate-900 dark:text-white mb-2">Masukkan Kaset Gim</h3>
+                    <p class="text-sm font-bold text-slate-600 dark:text-slate-300 leading-relaxed">
+                        Pilih salah satu dari 8 kaset gim: mulai dari <strong>Super Pika Bros (Pecahan)</strong>, <strong>Petualangan Angka</strong>, <strong>Penjaga Rimba</strong>, hingga <strong>Balap Baca</strong>.
                     </p>
                 </div>
 
-                <!-- Step 2 -->
-                <div class="toy-card bg-white dark:bg-slate-900 p-7 rounded-[2rem] border-4 border-amber-300 dark:border-amber-800 text-center relative">
-                    <div class="w-16 h-16 rounded-3xl bg-amber-100 dark:bg-amber-950 text-3xl flex items-center justify-center mx-auto mb-4 shadow-sm border-2 border-amber-300">
-                        🧠
+                <!-- Stage 2 -->
+                <div class="cartridge-card bg-slate-100 dark:bg-slate-900 p-6 rounded-3xl border-4 border-slate-900 dark:border-amber-400 relative overflow-hidden">
+                    <div class="flex items-center justify-between mb-4 pb-3 border-b-2 border-dashed border-slate-300 dark:border-slate-700">
+                        <span class="font-pixel text-xs text-amber-600 dark:text-amber-400">STAGE 02</span>
+                        <span class="text-2xl">🕹️</span>
                     </div>
-                    <span class="inline-block text-xs font-extrabold uppercase px-3 py-0.5 rounded-full bg-amber-100 dark:bg-amber-950 text-amber-800 dark:text-amber-300 mb-2">Langkah 2</span>
-                    <h3 class="font-kids font-bold text-xl text-slate-900 dark:text-white mb-2">Selesaikan Tantangan Seru</h3>
-                    <p class="text-sm font-bold text-slate-600 dark:text-slate-400 leading-relaxed">
-                        Jawab teka-teki angka, FPB & KPK, cerita, dan rintangan dengan teliti. Kalau belum berhasil, jangan menyerah ya, coba lagi!
+                    <h3 class="font-console font-extrabold text-xl text-slate-900 dark:text-white mb-2">Kalahkan Boss Tantangan</h3>
+                    <p class="text-sm font-bold text-slate-600 dark:text-slate-300 leading-relaxed">
+                        Jawab soal berhitung, pecahan, FPB & KPK, serta literasi dengan tepat. Jangan takut *Game Over*, tekan *Continue* dan coba lagi sampai mahir!
                     </p>
                 </div>
 
-                <!-- Step 3 -->
-                <div class="toy-card bg-white dark:bg-slate-900 p-7 rounded-[2rem] border-4 border-emerald-300 dark:border-emerald-800 text-center relative">
-                    <div class="w-16 h-16 rounded-3xl bg-emerald-100 dark:bg-emerald-950 text-3xl flex items-center justify-center mx-auto mb-4 shadow-sm border-2 border-emerald-300">
-                        🏆
+                <!-- Stage 3 -->
+                <div class="cartridge-card bg-slate-100 dark:bg-slate-900 p-6 rounded-3xl border-4 border-slate-900 dark:border-emerald-400 relative overflow-hidden">
+                    <div class="flex items-center justify-between mb-4 pb-3 border-b-2 border-dashed border-slate-300 dark:border-slate-700">
+                        <span class="font-pixel text-xs text-emerald-600 dark:text-emerald-400">STAGE 03</span>
+                        <span class="text-2xl">🏆</span>
                     </div>
-                    <span class="inline-block text-xs font-extrabold uppercase px-3 py-0.5 rounded-full bg-emerald-100 dark:bg-emerald-950 text-emerald-800 dark:text-emerald-300 mb-2">Langkah 3</span>
-                    <h3 class="font-kids font-bold text-xl text-slate-900 dark:text-white mb-2">Raih Bintang Prestasi!</h3>
-                    <p class="text-sm font-bold text-slate-600 dark:text-slate-400 leading-relaxed">
-                        Ajak teman sekelas, kakak, atau ayah bunda bermain bersama. Kumpulkan bintangnya dan jadilah juara kebanggaan sekolah!
+                    <h3 class="font-console font-extrabold text-xl text-slate-900 dark:text-white mb-2">Raih High Score & 1-UP!</h3>
+                    <p class="text-sm font-bold text-slate-600 dark:text-slate-300 leading-relaxed">
+                        Setiap kali bermain, kamu mendapat tambahan <strong>Bintang 1-UP</strong>! Simpan gim kesukaanmu di *Memory Card* dan ajak teman sekelas beradu skor!
                     </p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Creator Section: Kenalan Sama Pak Rahmat Yuk! -->
-    <section id="pak-rahmat" class="py-16 bg-gradient-to-br from-sky-600 via-indigo-600 to-purple-700 text-white relative overflow-hidden">
-        <!-- Decorative Stars Background -->
-        <div class="absolute inset-0 opacity-15 pointer-events-none" style="background-image: radial-gradient(#ffffff 2px, transparent 2px); background-size: 32px 32px;"></div>
-
+    <!-- Creator Section: Game Master Profile Card (90s Boss / Developer Room) -->
+    <section id="pak-rahmat" class="py-16 bg-gradient-to-b from-[#16113a] to-[#090718] text-white border-t-4 border-indigo-500 relative overflow-hidden">
         <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-            <div class="bg-white/15 backdrop-blur-md border-4 border-white/30 rounded-[2.5rem] p-6 sm:p-10 lg:p-12 shadow-2xl">
+            <div class="bg-slate-900/90 border-4 border-amber-400 rounded-[2rem] p-6 sm:p-10 shadow-[0_14px_0_#000000]">
+                <!-- Top Retro Window Bar -->
+                <div class="flex items-center justify-between bg-indigo-950 px-4 py-2.5 rounded-xl border-2 border-indigo-500/50 mb-8 font-pixel text-[10px]">
+                    <span class="text-amber-400">★ DEVELOPER CREDITS & GAME MASTER ★</span>
+                    <span class="text-emerald-400 hidden sm:inline">SDN 011 BALIKPAPAN TENGAH</span>
+                </div>
+
                 <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
-                    <!-- Creator Photo & Playful Frame -->
+                    <!-- Creator Photo in 16-Bit Character Select Frame -->
                     <div class="lg:col-span-4 flex flex-col items-center text-center">
-                        <div class="w-36 h-36 sm:w-44 sm:h-44 rounded-[2.2rem] bg-gradient-to-tr from-amber-300 via-yellow-400 to-orange-500 p-2 shadow-2xl mb-5 relative group rotate-1 hover:rotate-0 transition-transform">
+                        <div class="w-40 h-40 sm:w-44 sm:h-44 rounded-2xl bg-gradient-to-tr from-amber-400 via-pink-500 to-cyan-400 p-1.5 border-4 border-slate-950 shadow-2xl mb-4 relative">
                             <img
                                 src="https://i.imgur.com/YbvvB0o.jpeg"
                                 alt="Foto Pak Abdul Rahmat, S.Pd"
                                 referrerpolicy="no-referrer"
-                                onerror="this.onerror=null;this.src='https://placehold.co/300x300/0284c7/ffffff?text=Pak+Rahmat';"
-                                class="w-full h-full rounded-[1.8rem] object-cover object-top shadow-inner"
+                                onerror="this.onerror=null;this.src='https://placehold.co/300x300/4f46e5/ffffff?text=Pak+Rahmat';"
+                                class="w-full h-full rounded-xl object-cover object-top"
                             >
-                            <div class="absolute -bottom-3 -right-3 w-12 h-12 rounded-2xl bg-amber-400 text-slate-900 flex items-center justify-center text-2xl shadow-lg border-4 border-white" title="Sahabat Anak Hebat">
-                                🌟
+                            <div class="absolute -bottom-3 left-1/2 -translate-x-1/2 px-3 py-1 rounded-md bg-slate-950 border-2 border-amber-400 font-pixel text-[9px] text-amber-400 whitespace-nowrap">
+                                LVL 99 CREATOR
                             </div>
                         </div>
-                        <span class="px-4 py-1 rounded-full bg-amber-300 text-slate-900 text-xs font-extrabold uppercase tracking-wide mb-2 shadow-sm">
-                            Pembuat Gim KEREN
-                        </span>
-                        <h3 class="font-kids font-bold text-2xl sm:text-3xl text-white">Abdul Rahmat, S.Pd</h3>
-                        <p class="text-sm text-sky-100 font-bold mt-1">SD Negeri 011 Balikpapan Tengah</p>
+                        <h3 class="font-console font-extrabold text-2xl text-white mt-3">Abdul Rahmat, S.Pd</h3>
+                        <p class="font-console font-bold text-sm text-cyan-300 mt-0.5">SD Negeri 011 Balikpapan Tengah</p>
                     </div>
 
-                    <!-- Creator Greeting & Info -->
+                    <!-- Dialogue Box & Contact -->
                     <div class="lg:col-span-8 text-center lg:text-left">
-                        <div class="inline-flex items-center gap-2 text-amber-300 text-xs sm:text-sm font-extrabold uppercase tracking-wider mb-3">
-                            <span>👋 Salam Hangat dari Pak Rahmat</span>
+                        <!-- Classic RPG Dialogue Box -->
+                        <div class="bg-slate-950 border-4 border-white rounded-2xl p-5 mb-6 text-left shadow-inner">
+                            <p class="font-pixel text-[10px] text-amber-400 mb-2">PAK RAHMAT SAYS:</p>
+                            <p class="font-console font-bold text-lg sm:text-2xl text-white leading-snug mb-2">
+                                "Belajar itu sama serunya seperti menamatkan gim favorit! Semakin sering kamu mencoba menyelesaikan misi, semakin naik level kepintaranmu!"
+                            </p>
+                            <p class="text-slate-300 text-xs sm:text-sm font-bold leading-relaxed">
+                                Seluruh 8 kaset gim di konsol <strong>Gim KEREN ala Pak Rahmat</strong> ini dirancang khusus agar anak-anak dapat berlatih matematika (angka, pecahan, FPB & KPK), membaca cepat, menjaga kelestarian alam, dan meraih bintang prestasi dengan gembira.
+                            </p>
                         </div>
-                        <h2 class="font-kids font-bold text-2xl sm:text-4xl text-white leading-snug mb-4">
-                            "Belajar Itu Seperti Bermain Gim: Semakin Sering Mencoba, Semakin Hebat dan Juara!"
-                        </h2>
-                        <p class="text-sky-100 text-sm sm:text-base font-bold leading-relaxed mb-6">
-                            <strong>Gim KEREN ala Pak Rahmat</strong> dibuat khusus agar anak-anak Indonesia dapat belajar berhitung angka, memahami pecahan, FPB & KPK, membaca cepat, mencintai lingkungan rimba, serta meraih prestasi dengan wajah gembira dan penuh semangat.
-                        </p>
 
-                        <!-- School & Contact Cards -->
+                        <!-- Contact & School Slots -->
                         <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-6 text-left">
-                            <div class="p-4 rounded-2xl bg-white/15 border-2 border-white/20 flex items-center gap-3.5">
-                                <div class="w-12 h-12 rounded-2xl bg-amber-400 text-slate-900 flex items-center justify-center text-xl shrink-0 shadow">
+                            <div class="p-3.5 rounded-xl bg-indigo-950/80 border-2 border-indigo-400/40 flex items-center gap-3.5">
+                                <div class="w-11 h-11 rounded-xl bg-amber-400 text-slate-950 flex items-center justify-center text-lg shrink-0 font-bold border-2 border-slate-950">
                                     🏫
                                 </div>
                                 <div>
-                                    <p class="text-xs text-sky-200 font-bold">Sekolah / Instansi</p>
-                                    <p class="text-sm font-black text-white">SD Negeri 011 Balikpapan Tengah</p>
+                                    <p class="font-pixel text-[8px] text-indigo-300">HOME BASE / SEKOLAH</p>
+                                    <p class="font-console font-bold text-sm text-white mt-0.5">SD Negeri 011 Balikpapan Tengah</p>
                                 </div>
                             </div>
 
-                            <div class="p-4 rounded-2xl bg-white/15 border-2 border-white/20 flex items-center justify-between gap-3">
+                            <div class="p-3.5 rounded-xl bg-indigo-950/80 border-2 border-indigo-400/40 flex items-center justify-between gap-3">
                                 <div class="flex items-center gap-3.5">
-                                    <div class="w-12 h-12 rounded-2xl bg-emerald-400 text-slate-900 flex items-center justify-center text-xl shrink-0 shadow">
-                                        📞
+                                    <div class="w-11 h-11 rounded-xl bg-emerald-400 text-slate-950 flex items-center justify-center text-lg shrink-0 font-bold border-2 border-slate-950">
+                                        📟
                                     </div>
                                     <div>
-                                        <p class="text-xs text-sky-200 font-bold">No. Telp / WhatsApp</p>
-                                        <p class="text-sm font-black text-white">081351767574</p>
+                                        <p class="font-pixel text-[8px] text-indigo-300">HOTLINE / WHATSAPP</p>
+                                        <p class="font-console font-bold text-sm text-white mt-0.5">081351767574</p>
                                     </div>
                                 </div>
-                                <button onclick="copyTextToClipboard('081351767574', 'Nomor telepon Pak Rahmat berhasil disalin!')" class="px-3 py-1.5 rounded-xl bg-white/20 hover:bg-white/30 text-xs font-extrabold text-white transition">
-                                    Salin
+                                <button onclick="copyTextToClipboard('081351767574', 'Nomor Pak Rahmat berhasil disalin!')" class="px-3 py-1.5 rounded-lg bg-amber-400 hover:bg-amber-300 text-slate-950 font-pixel text-[9px] border border-slate-950">
+                                    COPY
                                 </button>
                             </div>
                         </div>
 
-                        <!-- Action Buttons for Teachers, Parents & Kids -->
+                        <!-- Action Buttons -->
                         <div class="flex flex-wrap items-center justify-center lg:justify-start gap-3">
-                            <a href="https://wa.me/6281351767574?text=Halo%20Pak%20Abdul%20Rahmat%2C%20anak-anak%20sangat%20senang%20bermain%20di%20Gim%20KEREN%20ala%20Pak%20Rahmat!" target="_blank" rel="noopener noreferrer" class="btn-toy inline-flex items-center gap-2 px-6 py-3.5 rounded-2xl bg-emerald-500 hover:bg-emerald-600 text-white font-kids font-bold text-sm sm:text-base border-2 border-emerald-300">
-                                <i class="fa-brands fa-whatsapp text-lg"></i>
-                                <span>Sapa Pak Rahmat di WhatsApp</span>
+                            <a href="https://wa.me/6281351767574?text=Halo%20Pak%20Abdul%20Rahmat%2C%20tampilan%20konsol%20retro%20Gim%20KEREN%20ala%20Pak%20Rahmat%20sangat%20seru!" target="_blank" rel="noopener noreferrer" class="btn-arcade inline-flex items-center gap-2.5 px-5 py-3.5 rounded-xl bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-pixel text-[10px] sm:text-xs border-2 border-slate-950">
+                                <i class="fa-brands fa-whatsapp text-base"></i>
+                                <span>CHAT WHATSAPP</span>
                             </a>
-                            <button onclick="copyAllKidGames()" class="btn-toy inline-flex items-center gap-2 px-6 py-3.5 rounded-2xl bg-amber-400 hover:bg-amber-500 text-slate-900 font-kids font-bold text-sm sm:text-base border-2 border-amber-200">
-                                <i class="fa-solid fa-share-nodes"></i>
-                                <span>Bagikan Semua 8 Link Gim</span>
+                            <button onclick="copyAllKidGames()" class="btn-arcade inline-flex items-center gap-2.5 px-5 py-3.5 rounded-xl bg-amber-400 hover:bg-amber-300 text-slate-950 font-pixel text-[10px] sm:text-xs border-2 border-slate-950">
+                                <i class="fa-solid fa-share-nodes text-sm"></i>
+                                <span>SALIN 8 LINK GIM</span>
                             </button>
                         </div>
                     </div>
@@ -574,38 +682,37 @@
     </section>
 
     <!-- Footer -->
-    <footer class="bg-white dark:bg-slate-950 border-t-4 border-sky-200 dark:border-slate-800 py-10">
+    <footer class="bg-slate-950 border-t-4 border-slate-800 py-8 text-slate-400">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-center sm:text-left">
             <div class="flex items-center gap-3">
-                <div class="w-10 h-10 rounded-2xl bg-gradient-to-tr from-amber-400 to-pink-500 flex items-center justify-center text-xl shadow">
-                    🎮
+                <div class="w-9 h-9 rounded-lg bg-amber-400 text-slate-950 flex items-center justify-center font-bold border-2 border-white">
+                    🕹️
                 </div>
                 <div>
-                    <p class="font-kids font-bold text-base text-slate-900 dark:text-white">Gim KEREN ala Pak Rahmat</p>
-                    <p class="text-xs font-bold text-slate-500 dark:text-slate-400">Oleh Abdul Rahmat, S.Pd • SD Negeri 011 Balikpapan Tengah (Telp. 081351767574)</p>
+                    <p class="font-pixel text-[10px] text-white">GIM KEREN ALA PAK RAHMAT • 90s-2000s CONSOLE EDITION</p>
+                    <p class="text-xs font-bold text-slate-400 mt-0.5">Oleh Abdul Rahmat, S.Pd • SD Negeri 011 Balikpapan Tengah (081351767574)</p>
                 </div>
             </div>
-            <p class="text-xs font-extrabold text-slate-500 dark:text-slate-400">
-                &copy; <span id="currentYear"></span> Gim KEREN ala Pak Rahmat • Bermain Seru, Belajar Makin Maju! 🌟
+            <p class="font-pixel text-[9px] text-emerald-400">
+                &copy; <span id="currentYear"></span> CREDIT 99 • PRESS START TO LEARN!
             </p>
         </div>
     </footer>
 
-    <!-- JavaScript Logic, Game Data & Web Audio Sound Effects -->
+    <!-- JavaScript Logic: 8 Games Data, Interactive Console Screen & 8-Bit Chiptune Audio -->
     <script>
-        // Complete Data of the 8 Kid-Friendly Games by Pak Rahmat
+        // Complete Data of the 8 Kid Games by Pak Rahmat (with updated v2-petualangan-angka link)
         const kidGamesData = [
             {
                 id: 'bintang-prestasi',
                 number: '01',
                 title: 'Gim Bintang Prestasi',
                 category: 'petualangan',
-                categoryLabel: 'Bintang & Prestasi',
+                categoryLabel: 'BINTANG & PRESTASI',
                 emoji: '🌟',
                 url: 'https://belajarkeren39.github.io/v1-bintang-prestasi/',
-                cardBorder: 'border-amber-300 dark:border-amber-700',
-                headerBg: 'from-amber-400 to-orange-500',
-                badgeColor: 'bg-amber-100 text-amber-800 dark:bg-amber-950 dark:text-amber-300',
+                shellColor: 'from-amber-400 to-orange-500',
+                labelColor: 'bg-amber-400 text-slate-950',
                 description: 'Ayo kumpulkan bintang prestasi sebanyak-banyaknya! Jawab tantangan seru dan buktikan kamu adalah Anak Hebat kebanggaan sekolah!',
                 funPoints: [
                     'Mengumpulkan bintang emas dari setiap misi yang berhasil diselesaikan',
@@ -618,16 +725,15 @@
                 number: '02',
                 title: 'Gim Petualangan Angka',
                 category: 'angka',
-                categoryLabel: 'Dunia Angka',
+                categoryLabel: 'DUNIA ANGKA',
                 emoji: '🔢',
                 url: 'https://belajarkeren39.github.io/v2-petualangan-angka/',
-                cardBorder: 'border-sky-300 dark:border-sky-700',
-                headerBg: 'from-sky-400 to-blue-600',
-                badgeColor: 'bg-sky-100 text-sky-800 dark:bg-sky-950 dark:text-sky-300',
-                description: 'Mari menjelajahi dunia angka yang penuh kejutan! Pecahkan teka-teki berhitung sambil melewati rintangan seru!',
+                shellColor: 'from-sky-400 to-blue-600',
+                labelColor: 'bg-sky-400 text-slate-950',
+                description: 'Mari menjelajahi dunia angka versi terbaru yang penuh kejutan! Pecahkan teka-teki berhitung sambil melewati rintangan seru!',
                 funPoints: [
-                    'Petualangan seru mengenal bilangan dan operasi hitung dasar',
-                    'Membuat pelajaran matematika terasa seperti bermain di taman hiburan',
+                    'Versi V2 terbaru dengan petualangan mengenal bilangan & operasi hitung',
+                    'Membuat pelajaran matematika terasa seperti bermain konsol klasik',
                     'Melatih kecepatan dan ketelitian berhitung anak'
                 ]
             },
@@ -636,17 +742,16 @@
                 number: '03',
                 title: 'Gim Penjaga Rimba',
                 category: 'petualangan',
-                categoryLabel: 'Alam & Rimba',
+                categoryLabel: 'ALAM & RIMBA',
                 emoji: '🌳',
                 url: 'https://belajarkeren39.github.io/v1-penjaga-rimba/',
-                cardBorder: 'border-emerald-300 dark:border-emerald-700',
-                headerBg: 'from-emerald-400 to-green-600',
-                badgeColor: 'bg-emerald-100 text-emerald-800 dark:bg-emerald-950 dark:text-emerald-300',
+                shellColor: 'from-emerald-400 to-green-600',
+                labelColor: 'bg-emerald-400 text-slate-950',
                 description: 'Jadilah pahlawan pelindung hutan! Bantu satwa dan pepohonan tetap lestari dengan menyelesaikan misi Penjaga Rimba!',
                 funPoints: [
                     'Menumbuhkan rasa cinta alam, satwa, dan kelestarian hutan sejak dini',
-                    'Visual bertema hutan rimba yang hijau, segar, dan ramah anak',
-                    'Misi petualangan interaktif yang menantang kepedulian lingkungan'
+                    'Visual bertema petualangan rimba yang segar dan ramah anak',
+                    'Misi interaktif yang menantang kepedulian lingkungan'
                 ]
             },
             {
@@ -654,12 +759,11 @@
                 number: '04',
                 title: 'Gim Penjaga Cerita',
                 category: 'baca',
-                categoryLabel: 'Cerita & Literasi',
+                categoryLabel: 'CERITA & LITERASI',
                 emoji: '📚',
                 url: 'https://belajarkeren39.github.io/gim-penjaga-cerita/',
-                cardBorder: 'border-purple-300 dark:border-purple-700',
-                headerBg: 'from-purple-500 to-indigo-600',
-                badgeColor: 'bg-purple-100 text-purple-800 dark:bg-purple-950 dark:text-purple-300',
+                shellColor: 'from-purple-500 to-indigo-600',
+                labelColor: 'bg-purple-400 text-slate-950',
                 description: 'Dunia dongeng dan cerita membutuhkan bantuanmu! Yuk baca kisahnya baik-baik dan jaga alur ceritanya agar tetap utuh!',
                 funPoints: [
                     'Meningkatkan minat baca dan pemahaman isi cerita dengan cara menyenangkan',
@@ -672,16 +776,15 @@
                 number: '05',
                 title: 'Gim Super Pika Bros (Pecahan)',
                 category: 'angka',
-                categoryLabel: 'Petualangan Pecahan',
+                categoryLabel: 'AKSI PECAHAN',
                 emoji: '⚡',
                 url: 'https://belajarituseru39-gif.github.io/super-pika-bros/',
-                cardBorder: 'border-yellow-400 dark:border-yellow-600',
-                headerBg: 'from-yellow-400 via-amber-500 to-orange-500',
-                badgeColor: 'bg-yellow-100 text-yellow-900 dark:bg-yellow-950 dark:text-yellow-300',
-                description: 'Lompat dan berpetualang bersama Super Pika Bros! Taklukkan tantangan bilangan pecahan di setiap levelnya!',
+                shellColor: 'from-yellow-400 via-amber-500 to-orange-500',
+                labelColor: 'bg-yellow-300 text-slate-950',
+                description: 'Lompat dan berpetualang ala gim platformer klasik bersama Super Pika Bros! Taklukkan tantangan bilangan pecahan di setiap level!',
                 funPoints: [
-                    'Belajar materi Pecahan (senilai, penjumlahan, perbandingan) lewat aksi platformer seru',
-                    'Karakter lucu dan enerjik yang sangat disukai anak-anak',
+                    'Belajar materi Pecahan lewat aksi platformer retro yang sangat seru',
+                    'Karakter ikonik yang enerjik dan disukai anak-anak',
                     'Mengubah materi pecahan yang sulit menjadi mudah dipahami'
                 ]
             },
@@ -690,12 +793,11 @@
                 number: '06',
                 title: 'Gim Tetes Melaju',
                 category: 'petualangan',
-                categoryLabel: 'Ketangkasan & Sains',
+                categoryLabel: 'AKSI & SAINS',
                 emoji: '💧',
                 url: 'https://belajarkeren39.github.io/v1-tetes-melaju/',
-                cardBorder: 'border-cyan-300 dark:border-cyan-700',
-                headerBg: 'from-cyan-400 to-sky-600',
-                badgeColor: 'bg-cyan-100 text-cyan-800 dark:bg-cyan-950 dark:text-cyan-300',
+                shellColor: 'from-cyan-400 to-sky-600',
+                labelColor: 'bg-cyan-300 text-slate-950',
                 description: 'Melaju kencang bersama si Tetes Air! Hindari rintangan dan selesaikan tantangan sepanjang perjalanan yang menegangkan!',
                 funPoints: [
                     'Melatih fokus, refleks, dan koordinasi mata serta tangan',
@@ -708,16 +810,15 @@
                 number: '07',
                 title: 'Liga Pahlawan - FPB dan KPK',
                 category: 'angka',
-                categoryLabel: 'Pahlawan Matematika',
+                categoryLabel: 'RPG MATEMATIKA',
                 emoji: '🦸‍♂️',
                 url: 'https://belajarkeren39.github.io/liga-pahlawan-fpb-kpk/',
-                cardBorder: 'border-indigo-300 dark:border-indigo-700',
-                headerBg: 'from-indigo-500 to-violet-600',
-                badgeColor: 'bg-indigo-100 text-indigo-800 dark:bg-indigo-950 dark:text-indigo-300',
+                shellColor: 'from-indigo-500 to-violet-600',
+                labelColor: 'bg-indigo-300 text-slate-950',
                 description: 'Susun tim pahlawan supermu! Gunakan kekuatan FPB dan KPK untuk mengalahkan monster dan memenangkan Liga Pahlawan!',
                 funPoints: [
-                    'Fokus khusus menguasai materi FPB (Faktor Persekutuan Terbesar) & KPK (Kelipatan Persekutuan Terkecil)',
-                    'Pertarungan pahlawan vs monster yang memacu semangat berhitung',
+                    'Fokus menguasai FPB (Faktor Persekutuan Terbesar) & KPK (Kelipatan Persekutuan Terkecil)',
+                    'Pertarungan pahlawan vs monster ala RPG konsol 90-an',
                     'Membantu siswa SD menguasai kelipatan dan faktor bilangan dengan cepat'
                 ]
             },
@@ -726,17 +827,16 @@
                 number: '08',
                 title: 'Gim Balap Baca',
                 category: 'baca',
-                categoryLabel: 'Kecepatan Membaca',
+                categoryLabel: 'ARCADE BALAP BACA',
                 emoji: '🏎️',
                 url: 'https://belajarkeren39.github.io/v1-balap-baca/',
-                cardBorder: 'border-rose-300 dark:border-rose-700',
-                headerBg: 'from-rose-500 to-pink-600',
-                badgeColor: 'bg-rose-100 text-rose-800 dark:bg-rose-950 dark:text-rose-300',
-                description: 'Siap, sedia, melaju! Adu kecepatan dan ketepatan membacamu agar mobil balapmu mencapai garis finis paling pertama!',
+                shellColor: 'from-rose-500 to-pink-600',
+                labelColor: 'bg-rose-400 text-slate-950',
+                description: 'Siap, sedia, tancap gas! Adu kecepatan dan ketepatan membacamu agar mobil balapmu mencapai garis finis paling pertama!',
                 funPoints: [
                     'Meningkatkan kelancaran dan ketepatan membaca melalui balapan seru',
                     'Membuat anak-anak antusias membaca kata dan kalimat tanpa rasa bosan',
-                    'Sangat cocok untuk perlombaan literasi antar siswa di kelas'
+                    'Sangat cocok untuk turnamen literasi antar siswa di kelas'
                 ]
             }
         ];
@@ -747,8 +847,9 @@
         let favorites = [];
         let starsCount = 0;
         let soundEnabled = true;
+        let currentConsoleIndex = 0;
 
-        // Load Saved State from LocalStorage safely
+        // Load Saved State from LocalStorage
         try {
             const savedFavs = localStorage.getItem('gim_pak_rahmat_favs');
             if (savedFavs) favorites = JSON.parse(savedFavs);
@@ -757,7 +858,7 @@
             if (savedStars) starsCount = parseInt(savedStars, 10) || 0;
         } catch (e) {}
 
-        // Lightweight Web Audio API Synthesizer for Cute Kid Sound Effects (No external MP3 needed)
+        // 8-Bit Chiptune Web Audio Synthesizer (Square & Sawtooth Waves like Game Boy / NES)
         function playSound(type) {
             if (!soundEnabled) return;
             try {
@@ -766,45 +867,45 @@
                 const ctx = new AudioCtx();
                 const now = ctx.currentTime;
 
-                if (type === 'pop') {
+                if (type === 'blip') {
                     const osc = ctx.createOscillator();
                     const gain = ctx.createGain();
-                    osc.type = 'sine';
-                    osc.frequency.setValueAtTime(520, now);
-                    osc.frequency.exponentialRampToValueAtTime(880, now + 0.09);
-                    gain.gain.setValueAtTime(0.15, now);
-                    gain.gain.exponentialRampToValueAtTime(0.01, now + 0.09);
+                    osc.type = 'square';
+                    osc.frequency.setValueAtTime(660, now);
+                    osc.frequency.setValueAtTime(880, now + 0.04);
+                    gain.gain.setValueAtTime(0.08, now);
+                    gain.gain.exponentialRampToValueAtTime(0.005, now + 0.08);
                     osc.connect(gain);
                     gain.connect(ctx.destination);
                     osc.start(now);
-                    osc.stop(now + 0.09);
-                } else if (type === 'star') {
-                    const notes = [587.33, 880, 1174.66]; // D5, A5, D6
+                    osc.stop(now + 0.08);
+                } else if (type === 'coin') {
+                    // Classic 90s B5 -> E6 Coin Sound
+                    const osc = ctx.createOscillator();
+                    const gain = ctx.createGain();
+                    osc.type = 'square';
+                    osc.frequency.setValueAtTime(987.77, now);
+                    osc.frequency.setValueAtTime(1318.51, now + 0.07);
+                    gain.gain.setValueAtTime(0.1, now);
+                    gain.gain.exponentialRampToValueAtTime(0.008, now + 0.25);
+                    osc.connect(gain);
+                    gain.connect(ctx.destination);
+                    osc.start(now);
+                    osc.stop(now + 0.25);
+                } else if (type === 'powerup') {
+                    // 1-UP Arpeggio
+                    const notes = [330, 392, 659, 523, 587, 784];
                     notes.forEach((freq, idx) => {
                         const osc = ctx.createOscillator();
                         const gain = ctx.createGain();
-                        osc.type = 'triangle';
-                        osc.frequency.setValueAtTime(freq, now + idx * 0.07);
-                        gain.gain.setValueAtTime(0.16, now + idx * 0.07);
-                        gain.gain.exponentialRampToValueAtTime(0.01, now + idx * 0.07 + 0.18);
+                        osc.type = 'square';
+                        osc.frequency.setValueAtTime(freq, now + idx * 0.055);
+                        gain.gain.setValueAtTime(0.08, now + idx * 0.055);
+                        gain.gain.exponentialRampToValueAtTime(0.008, now + idx * 0.055 + 0.1);
                         osc.connect(gain);
                         gain.connect(ctx.destination);
-                        osc.start(now + idx * 0.07);
-                        osc.stop(now + idx * 0.07 + 0.18);
-                    });
-                } else if (type === 'fanfare') {
-                    const notes = [523.25, 659.25, 783.99, 1046.50]; // C5, E5, G5, C6
-                    notes.forEach((freq, idx) => {
-                        const osc = ctx.createOscillator();
-                        const gain = ctx.createGain();
-                        osc.type = 'sine';
-                        osc.frequency.setValueAtTime(freq, now + idx * 0.08);
-                        gain.gain.setValueAtTime(0.15, now + idx * 0.08);
-                        gain.gain.exponentialRampToValueAtTime(0.01, now + idx * 0.08 + 0.22);
-                        osc.connect(gain);
-                        gain.connect(ctx.destination);
-                        osc.start(now + idx * 0.08);
-                        osc.stop(now + idx * 0.08 + 0.22);
+                        osc.start(now + idx * 0.055);
+                        osc.stop(now + idx * 0.055 + 0.1);
                     });
                 }
             } catch (e) {}
@@ -816,32 +917,67 @@
             const btn = document.getElementById('soundBtn');
             if (soundEnabled) {
                 icon.className = 'fa-solid fa-volume-high';
-                btn.className = 'w-10 h-10 rounded-2xl bg-emerald-100 dark:bg-emerald-950 border-2 border-emerald-300 dark:border-emerald-800 text-emerald-700 dark:text-emerald-300 flex items-center justify-center hover:scale-105 transition';
-                playSound('pop');
-                showToast('Suara efek gim diaktifkan! 🔊', 'success');
+                btn.className = 'btn-arcade w-10 h-10 rounded-xl bg-emerald-400 text-slate-950 border-2 border-slate-900 flex items-center justify-center';
+                playSound('coin');
+                showToast('AUDIO 8-BIT CHIPTUNE: ON! 🔊', 'success');
             } else {
                 icon.className = 'fa-solid fa-volume-xmark';
-                btn.className = 'w-10 h-10 rounded-2xl bg-slate-200 dark:bg-slate-800 border-2 border-slate-300 dark:border-slate-700 text-slate-500 flex items-center justify-center hover:scale-105 transition';
-                showToast('Suara efek gim dimatikan 🔇', 'info');
+                btn.className = 'btn-arcade w-10 h-10 rounded-xl bg-slate-500 text-white border-2 border-slate-900 flex items-center justify-center';
+                showToast('AUDIO 8-BIT: MUTE 🔇', 'info');
             }
         }
 
-        // Earn Star Reward when Playing or Clicking Star
+        // Interactive Handheld Console Screen Controller
+        function updateConsoleScreen() {
+            const game = kidGamesData[currentConsoleIndex];
+            if (!game) return;
+            document.getElementById('screenSlotText').textContent = `CARTRIDGE ${game.number}/08`;
+            document.getElementById('screenCategoryText').textContent = game.categoryLabel;
+            document.getElementById('screenEmojiBox').textContent = game.emoji;
+            document.getElementById('screenEmojiBox').className = `w-16 h-16 sm:w-20 sm:h-20 rounded-2xl bg-gradient-to-br ${game.shellColor} border-4 border-white flex items-center justify-center text-4xl shadow-lg animate-pixel-float shrink-0`;
+            document.getElementById('screenGameTitle').textContent = game.title;
+            document.getElementById('screenGameDesc').textContent = game.description;
+        }
+
+        function nextConsoleGame() {
+            playSound('blip');
+            currentConsoleIndex = (currentConsoleIndex + 1) % kidGamesData.length;
+            updateConsoleScreen();
+        }
+
+        function prevConsoleGame() {
+            playSound('blip');
+            currentConsoleIndex = (currentConsoleIndex - 1 + kidGamesData.length) % kidGamesData.length;
+            updateConsoleScreen();
+        }
+
+        function launchCurrentConsoleGame() {
+            const game = kidGamesData[currentConsoleIndex];
+            earnStarReward();
+            window.open(game.url, '_blank', 'noopener,noreferrer');
+        }
+
+        function inspectCurrentConsoleGame() {
+            const game = kidGamesData[currentConsoleIndex];
+            openKidModal(game.id);
+        }
+
+        // Earn 1-UP Star Score
         function earnStarReward() {
             starsCount += 1;
-            document.getElementById('starCounter').textContent = starsCount;
+            document.getElementById('starCounter').textContent = String(starsCount).padStart(2, '0');
             try {
                 localStorage.setItem('gim_pak_rahmat_stars', starsCount.toString());
             } catch (e) {}
-            playSound('star');
+            playSound('coin');
         }
 
         function celebrateStars() {
             earnStarReward();
-            showToast(`Hebat! Kamu sudah mengumpulkan ${starsCount} Bintang Prestasi! ⭐`, 'success');
+            showToast(`1-UP! SKOR BINTANG KAMU: ${starsCount} ⭐`, 'success');
         }
 
-        // Render Game Cards
+        // Render 90s Game Cartridge Cards
         function renderGames() {
             const grid = document.getElementById('gamesGrid');
             const emptyState = document.getElementById('emptyState');
@@ -849,7 +985,7 @@
             const favBadge = document.getElementById('favCountBadge');
 
             favBadge.textContent = favorites.length;
-            document.getElementById('starCounter').textContent = starsCount;
+            document.getElementById('starCounter').textContent = String(starsCount).padStart(2, '0');
 
             const filtered = kidGamesData.filter(game => {
                 const matchesCat =
@@ -870,9 +1006,9 @@
                 grid.innerHTML = '';
                 emptyState.classList.remove('hidden');
                 if (activeCategory === 'favorit' && favorites.length === 0) {
-                    emptyStateMsg.textContent = 'Kamu belum menandai gim favorit. Klik tombol hati ❤️ di pojok kartu gim yang paling kamu sukai ya!';
+                    emptyStateMsg.textContent = 'Memory Card masih kosong! Klik ikon hati ❤️ pada kaset gim untuk menyimpannya.';
                 } else {
-                    emptyStateMsg.textContent = 'Coba gunakan kata kunci lain atau tampilkan semua 8 gim seru.';
+                    emptyStateMsg.textContent = 'Kaset dengan kata kunci tersebut belum ditemukan. Coba tekan tombol RESET.';
                 }
                 return;
             }
@@ -882,81 +1018,90 @@
             grid.innerHTML = filtered.map(game => {
                 const isFav = favorites.includes(game.id);
                 return `
-                <article class="toy-card bg-white dark:bg-slate-900 rounded-[2rem] border-4 ${game.cardBorder} overflow-hidden flex flex-col justify-between relative group">
-                    <!-- Colorful Playful Card Top Banner -->
+                <article class="cartridge-card bg-slate-200 dark:bg-slate-800 rounded-t-3xl rounded-b-xl border-4 border-slate-950 overflow-hidden flex flex-col justify-between relative group">
+                    <!-- Top Cartridge Grip Ridges & Indent -->
                     <div>
-                        <div class="h-28 bg-gradient-to-r ${game.headerBg} p-4 flex items-start justify-between relative overflow-hidden">
-                            <!-- Decorative Circles -->
-                            <div class="w-24 h-24 rounded-full bg-white/15 absolute -right-6 -bottom-8 pointer-events-none"></div>
-                            <div class="w-14 h-14 rounded-full bg-white/15 absolute left-1/3 -top-6 pointer-events-none"></div>
-
-                            <!-- Game Number Pill -->
-                            <span class="px-3 py-1 rounded-full bg-black/20 backdrop-blur-sm text-white font-kids font-bold text-xs">
-                                Gim #${game.number}
-                            </span>
-
-                            <!-- Favorite Heart Button -->
-                            <button
-                                onclick="toggleFavorite('${game.id}')"
-                                class="w-10 h-10 rounded-2xl bg-white/90 dark:bg-slate-900/90 flex items-center justify-center shadow-md hover:scale-110 transition ${isFav ? 'text-rose-500' : 'text-slate-400 hover:text-rose-500'}"
-                                title="${isFav ? 'Hapus dari Disukai' : 'Tambahkan ke Disukai'}"
-                                aria-label="Suka Gim Ini"
-                            >
-                                <i class="${isFav ? 'fa-solid' : 'fa-regular'} fa-heart text-base"></i>
-                            </button>
+                        <div class="h-7 cartridge-grip bg-slate-300 dark:bg-slate-700 border-b-4 border-slate-950 flex items-center justify-between px-3">
+                            <span class="font-pixel text-[8px] text-slate-700 dark:text-slate-300">ROM-${game.number}</span>
+                            <span class="font-pixel text-[8px] text-indigo-600 dark:text-amber-400">◀ INSERT THIS SIDE UP ▶</span>
                         </div>
 
-                        <!-- Floating Big Emoji Icon -->
-                        <div class="px-5 -mt-10 relative z-10 flex items-end justify-between">
-                            <div class="w-18 h-18 w-16 h-16 rounded-3xl bg-white dark:bg-slate-800 border-4 border-white dark:border-slate-800 shadow-lg flex items-center justify-center text-3xl group-hover:scale-110 group-hover:rotate-6 transition-transform">
-                                ${game.emoji}
+                        <!-- Cartridge Sticker Label -->
+                        <div class="p-4 pb-2">
+                            <div class="rounded-2xl border-4 border-slate-950 overflow-hidden bg-white dark:bg-slate-900 shadow-inner">
+                                <!-- Sticker Top Art Banner -->
+                                <div class="h-24 bg-gradient-to-r ${game.shellColor} p-3 flex items-start justify-between relative">
+                                    <span class="px-2.5 py-1 rounded-md bg-slate-950/80 text-amber-300 font-pixel text-[9px] border border-white/20">
+                                        #${game.number}
+                                    </span>
+
+                                    <!-- Center Sticker Emoji -->
+                                    <div class="w-14 h-14 rounded-2xl bg-slate-950/25 backdrop-blur-sm border-2 border-white flex items-center justify-center text-3xl shadow-md group-hover:scale-110 transition-transform">
+                                        ${game.emoji}
+                                    </div>
+
+                                    <!-- Save to Memory Card (Favorite) Button -->
+                                    <button
+                                        onclick="toggleFavorite('${game.id}')"
+                                        class="w-9 h-9 rounded-xl bg-slate-950/80 flex items-center justify-center border border-white/30 hover:scale-110 transition ${isFav ? 'text-rose-500' : 'text-slate-300 hover:text-rose-400'}"
+                                        title="${isFav ? 'Hapus dari Memory Card' : 'Simpan ke Memory Card'}"
+                                        aria-label="Simpan Gim"
+                                    >
+                                        <i class="${isFav ? 'fa-solid' : 'fa-regular'} fa-heart text-sm"></i>
+                                    </button>
+                                </div>
+
+                                <!-- Sticker Text Content -->
+                                <div class="p-4">
+                                    <span class="inline-block font-pixel text-[8px] px-2 py-0.5 rounded ${game.labelColor} border border-slate-950 mb-2">
+                                        ${game.categoryLabel}
+                                    </span>
+                                    <h3 class="font-console font-extrabold text-lg text-slate-900 dark:text-white group-hover:text-indigo-600 dark:group-hover:text-amber-400 transition leading-snug mb-1.5">
+                                        ${game.title}
+                                    </h3>
+                                    <p class="text-slate-600 dark:text-slate-300 text-xs font-bold leading-relaxed line-clamp-3">
+                                        ${game.description}
+                                    </p>
+                                </div>
                             </div>
-                            <span class="text-[11px] font-extrabold uppercase tracking-wide px-3 py-1 rounded-full ${game.badgeColor}">
-                                ${game.categoryLabel}
-                            </span>
-                        </div>
-
-                        <!-- Card Body -->
-                        <div class="p-5 pt-4">
-                            <h3 class="font-kids font-bold text-xl text-slate-900 dark:text-white group-hover:text-sky-600 dark:group-hover:text-sky-400 transition leading-snug mb-2">
-                                ${game.title}
-                            </h3>
-                            <p class="text-slate-600 dark:text-slate-300 text-xs sm:text-sm font-bold leading-relaxed">
-                                ${game.description}
-                            </p>
                         </div>
                     </div>
 
-                    <!-- Card Action Buttons -->
-                    <div class="p-5 pt-0 flex items-center gap-2">
-                        <a
-                            href="${game.url}"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            onclick="earnStarReward()"
-                            class="btn-toy flex-1 inline-flex items-center justify-center gap-2 px-4 py-3 rounded-2xl bg-gradient-to-r from-emerald-500 to-green-500 hover:from-emerald-600 hover:to-green-600 text-white font-kids font-bold text-sm tracking-wide"
-                        >
-                            <i class="fa-solid fa-play text-xs"></i>
-                            <span>Ayo Main!</span>
-                        </a>
+                    <!-- Cartridge Bottom Controls & Gold PCB Pins -->
+                    <div>
+                        <div class="px-4 pb-3 pt-1 flex items-center gap-2">
+                            <a
+                                href="${game.url}"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                onclick="earnStarReward()"
+                                class="btn-arcade flex-1 inline-flex items-center justify-center gap-2 px-3 py-3 rounded-xl bg-gradient-to-r from-emerald-400 to-green-500 hover:from-emerald-300 hover:to-green-400 text-slate-950 font-pixel text-[10px] border-2 border-slate-950"
+                            >
+                                <i class="fa-solid fa-play"></i>
+                                <span>START!</span>
+                            </a>
 
-                        <button
-                            onclick="openKidModal('${game.id}')"
-                            class="btn-toy w-11 h-11 rounded-2xl bg-amber-100 dark:bg-amber-950/70 hover:bg-amber-200 text-amber-800 dark:text-amber-300 flex items-center justify-center font-bold"
-                            title="Lihat Cerita & Misi Gim"
-                            aria-label="Info Gim"
-                        >
-                            <i class="fa-solid fa-wand-magic-sparkles"></i>
-                        </button>
+                            <button
+                                onclick="openKidModal('${game.id}')"
+                                class="btn-arcade w-10 h-10 rounded-xl bg-amber-400 hover:bg-amber-300 text-slate-950 flex items-center justify-center font-bold border-2 border-slate-950"
+                                title="Lihat Manual & Misi Kaset"
+                                aria-label="Info Kaset"
+                            >
+                                <i class="fa-solid fa-book-open text-xs"></i>
+                            </button>
 
-                        <button
-                            onclick="copyTextToClipboard('${game.url}', 'Link ${game.title} berhasil disalin!')"
-                            class="btn-toy w-11 h-11 rounded-2xl bg-sky-100 dark:bg-slate-800 hover:bg-sky-200 text-sky-700 dark:text-sky-300 flex items-center justify-center font-bold"
-                            title="Salin Link Gim"
-                            aria-label="Salin Link"
-                        >
-                            <i class="fa-regular fa-copy"></i>
-                        </button>
+                            <button
+                                onclick="copyTextToClipboard('${game.url}', 'Link ${game.title} disalin!')"
+                                class="btn-arcade w-10 h-10 rounded-xl bg-indigo-500 hover:bg-indigo-400 text-white flex items-center justify-center font-bold border-2 border-slate-950"
+                                title="Salin Link Gim"
+                                aria-label="Salin Link"
+                            >
+                                <i class="fa-regular fa-copy text-xs"></i>
+                            </button>
+                        </div>
+
+                        <!-- Bottom Cartridge Slot Gold Pins -->
+                        <div class="mx-6 h-2.5 gold-pins rounded-t border-t-2 border-x-2 border-slate-950 opacity-90"></div>
                     </div>
                 </article>
                 `;
@@ -965,14 +1110,14 @@
 
         // Category Filter Handler
         function filterGames(category) {
-            playSound('pop');
+            playSound('blip');
             activeCategory = category;
             const buttons = document.querySelectorAll('.cat-pill');
             buttons.forEach(btn => {
                 if (btn.getAttribute('data-cat') === category) {
-                    btn.className = 'cat-pill btn-toy shrink-0 px-4 py-2.5 rounded-2xl text-xs sm:text-sm font-kids font-bold transition flex items-center gap-2 bg-sky-500 text-white';
+                    btn.className = 'cat-pill btn-arcade shrink-0 px-4 py-2.5 rounded-xl text-xs font-console font-extrabold uppercase tracking-wider transition flex items-center gap-2 bg-amber-400 text-slate-950 border-2 border-slate-900';
                 } else {
-                    btn.className = 'cat-pill btn-toy shrink-0 px-4 py-2.5 rounded-2xl text-xs sm:text-sm font-kids font-bold transition flex items-center gap-2 bg-white dark:bg-slate-900 text-slate-700 dark:text-slate-200 border-2 border-sky-200 dark:border-slate-700';
+                    btn.className = 'cat-pill btn-arcade shrink-0 px-4 py-2.5 rounded-xl text-xs font-console font-extrabold uppercase tracking-wider transition flex items-center gap-2 bg-white dark:bg-slate-800 text-slate-800 dark:text-slate-200 border-2 border-slate-900';
                 }
             });
             renderGames();
@@ -1002,18 +1147,18 @@
             filterGames('semua');
         }
 
-        // Toggle Favorite Heart
+        // Save to Memory Card (Favorite Toggle)
         function toggleFavorite(id) {
-            playSound('pop');
+            playSound('blip');
             const idx = favorites.indexOf(id);
             const game = kidGamesData.find(g => g.id === id);
             if (idx > -1) {
                 favorites.splice(idx, 1);
-                showToast(`${game.title} dihapus dari daftar disukai`, 'info');
+                showToast(`${game.title} dihapus dari Memory Card`, 'info');
             } else {
                 favorites.push(id);
                 earnStarReward();
-                showToast(`Yey! ${game.title} masuk daftar kesukaanmu! ❤️`, 'success');
+                showToast(`SAVED! ${game.title} masuk Memory Card! 💾`, 'success');
             }
             try {
                 localStorage.setItem('gim_pak_rahmat_favs', JSON.stringify(favorites));
@@ -1021,33 +1166,34 @@
             renderGames();
         }
 
-        // Spin Random Surprise Game for Kids
+        // Spin Random Cartridge Game
         function spinRandomGame() {
-            playSound('fanfare');
+            playSound('powerup');
             const randomIndex = Math.floor(Math.random() * kidGamesData.length);
+            currentConsoleIndex = randomIndex;
+            updateConsoleScreen();
             const chosen = kidGamesData[randomIndex];
             openKidModal(chosen.id);
-            showToast(`🎉 Kejutan! Kamu mendapat: ${chosen.title}!`, 'success');
+            showToast(`🎲 KASET TERPILIH: ${chosen.title}!`, 'success');
         }
 
-        // Open Kid Mission Modal
+        // Open Cartridge Modal
         function openKidModal(id) {
-            playSound('pop');
+            playSound('blip');
             const game = kidGamesData.find(g => g.id === id);
             if (!game) return;
 
             document.getElementById('modalEmojiBox').textContent = game.emoji;
-            document.getElementById('modalEmojiBox').className = `w-16 h-16 rounded-3xl flex items-center justify-center text-3xl shadow-lg border-4 border-white dark:border-slate-800 shrink-0 bg-gradient-to-br ${game.headerBg}`;
-            document.getElementById('modalHeaderBanner').className = `h-3 w-full absolute top-0 left-0 bg-gradient-to-r ${game.headerBg}`;
+            document.getElementById('modalEmojiBox').className = `w-16 h-16 rounded-2xl flex items-center justify-center text-3xl shadow-lg border-4 border-slate-900 shrink-0 bg-gradient-to-br ${game.shellColor}`;
             document.getElementById('modalCatBadge').textContent = game.categoryLabel;
-            document.getElementById('modalNumberBadge').textContent = `Gim #${game.number}`;
+            document.getElementById('modalNumberBadge').textContent = `ROM CARTRIDGE #${game.number}`;
             document.getElementById('modalGameTitle').textContent = game.title;
             document.getElementById('modalGameDesc').textContent = game.description;
 
             const funList = document.getElementById('modalFunList');
             funList.innerHTML = game.funPoints.map(pt => `
                 <li class="flex items-start gap-2.5">
-                    <span class="text-base leading-none mt-0.5">⭐</span>
+                    <span class="text-amber-500 font-pixel text-[10px] mt-1">▶</span>
                     <span>${pt}</span>
                 </li>
             `).join('');
@@ -1067,7 +1213,7 @@
         }
 
         function closeKidModal() {
-            playSound('pop');
+            playSound('blip');
             const modal = document.getElementById('kidModal');
             const content = document.getElementById('kidModalContent');
             modal.classList.add('opacity-0');
@@ -1083,9 +1229,16 @@
             if (e.target === this) closeKidModal();
         });
 
-        // Copy Text Helper (iframe safe)
+        // Keyboard Arrow Support for the Interactive Console
+        window.addEventListener('keydown', function (e) {
+            if (document.activeElement && document.activeElement.tagName === 'INPUT') return;
+            if (e.key === 'ArrowRight') nextConsoleGame();
+            if (e.key === 'ArrowLeft') prevConsoleGame();
+        });
+
+        // Copy Text Helper (iframe compatible)
         function copyTextToClipboard(text, message) {
-            playSound('pop');
+            playSound('coin');
             const textArea = document.createElement('textarea');
             textArea.value = text;
             textArea.style.position = 'fixed';
@@ -1105,23 +1258,23 @@
             document.body.removeChild(textArea);
         }
 
-        // Copy All 8 Links for WhatsApp Group
+        // Copy All 8 Links for WhatsApp
         function copyAllKidGames() {
-            const header = `🎮 *GIM KEREN ALA PAK RAHMAT (8 Gim Edukasi Anak Hebat)* 🌟\nKarya: Abdul Rahmat, S.Pd (SD Negeri 011 Balikpapan Tengah)\nNo. Telp/WA: 081351767574\n\n`;
+            const header = `🕹️ *GIM KEREN ALA PAK RAHMAT (Edisi Konsol 8 Gim Edukasi)* 🌟\nKarya: Abdul Rahmat, S.Pd (SD Negeri 011 Balikpapan Tengah)\nNo. Telp/WA: 081351767574\n\n`;
             const list = kidGamesData.map((g, idx) => `${idx + 1}. ${g.emoji} *${g.title}*\n${g.url}`).join('\n\n');
-            copyTextToClipboard(header + list, 'Daftar lengkap 8 link Gim KEREN ala Pak Rahmat berhasil disalin!');
+            copyTextToClipboard(header + list, 'Daftar 8 Kaset Gim KEREN ala Pak Rahmat berhasil disalin!');
         }
 
-        // Custom Kid-Friendly Toast Notification
+        // Retro Arcade Toast Notification
         function showToast(message, type = 'success') {
             const container = document.getElementById('toastContainer');
             const toast = document.createElement('div');
 
-            const emojiIcon = type === 'success' ? '🌟' : type === 'info' ? '🎈' : '⚠️';
+            const emojiIcon = type === 'success' ? '🕹️' : type === 'info' ? '💾' : '⚠️';
 
-            toast.className = 'pointer-events-auto flex items-center gap-3 px-5 py-3.5 rounded-3xl bg-slate-900 dark:bg-white text-white dark:text-slate-900 text-xs sm:text-sm font-extrabold shadow-2xl border-4 border-amber-400 transform translate-y-3 opacity-0 transition-all duration-300 max-w-sm';
+            toast.className = 'pointer-events-auto flex items-center gap-3 px-4 py-3 rounded-2xl bg-slate-950 text-amber-400 font-pixel text-[10px] leading-relaxed shadow-2xl border-4 border-amber-400 transform translate-y-3 opacity-0 transition-all duration-300 max-w-sm';
             toast.innerHTML = `
-                <span class="text-lg shrink-0">${emojiIcon}</span>
+                <span class="text-base shrink-0">${emojiIcon}</span>
                 <span>${message}</span>
             `;
 
@@ -1137,14 +1290,14 @@
             }, 3200);
         }
 
-        // Dark Mode Toggle
+        // Dark / Light Console Shell Toggle
         function toggleDarkMode() {
-            playSound('pop');
+            playSound('blip');
             const html = document.documentElement;
             const icon = document.getElementById('themeIcon');
             html.classList.toggle('dark');
             const isDark = html.classList.contains('dark');
-            icon.className = isDark ? 'fa-solid fa-sun text-amber-400' : 'fa-solid fa-moon';
+            icon.className = isDark ? 'fa-solid fa-sun' : 'fa-solid fa-moon';
             try {
                 localStorage.setItem('gim_pak_rahmat_theme', isDark ? 'dark' : 'light');
             } catch (e) {}
@@ -1152,7 +1305,7 @@
 
         // Mobile Menu Toggle
         function toggleMobileMenu() {
-            playSound('pop');
+            playSound('blip');
             const menu = document.getElementById('mobileMenu');
             const icon = document.getElementById('mobileMenuIcon');
             menu.classList.toggle('hidden');
@@ -1165,12 +1318,13 @@
 
             try {
                 const savedTheme = localStorage.getItem('gim_pak_rahmat_theme');
-                if (savedTheme === 'dark') {
-                    document.documentElement.classList.add('dark');
-                    document.getElementById('themeIcon').className = 'fa-solid fa-sun text-amber-400';
+                if (savedTheme === 'light') {
+                    document.documentElement.classList.remove('dark');
+                    document.getElementById('themeIcon').className = 'fa-solid fa-moon';
                 }
             } catch (e) {}
 
+            updateConsoleScreen();
             renderGames();
         };
     </script>
